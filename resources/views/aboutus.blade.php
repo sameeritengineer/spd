@@ -1,117 +1,69 @@
 @extends('layouts.app')
+@section('title', 'About Us')
 
 @section('content')
-<main>
-        <!--? Hero Start -->
-        <div class="container-fluid">
-            <div class="slider-area2">
-                <div class="slider-height2 hero-overly d-flex align-items-center">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="hero-cap hero-cap2">
-                                    <h2>About</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<section class="page-title bg-1">
+         <div class="overlay"></div>
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="block text-center">
+                     <h1 class="text-capitalize mb-5 text-lg">About Company</h1>
+                  </div>
+               </div>
             </div>
-        </div>
-        <!-- Hero End -->
-        <!--? Office environment  Start-->
-        <section class="office-environments section-padding30" >
-            <div class="container">
-                <div class="environments-wrapper environments-wrapper2 section-bg02" data-background="assets/img/gallery/section_bg02.png">
-                    <div class="row">
-                        <div class="col-xl-7 col-lg-8 offset-xl-5 offset-lg-4">
-                            <div class="office-pera">
-                                <div class="section-tittle">
-                                    <h2 class="mb-30">We have the latest  equipment</h2>
-                                    <p>Duis aute irure dolor inasfa reprehenderit in voluptate velit esse cillum reeut cupidatatfug nulla pariatur. Excepteur sintxsdfas occaecat.</p>
-                                    <a href="#" class="btn">About Us</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+         </div>
+      </section>
+      <!-- contact form start -->
+      <section class="section abtsection">
+        <img class="aftertop" src="{{ asset('myassets/images/after.png') }}" alt="image">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-12 col-sm-12 col-md-12">
+                  <div class="topabt">
+                     <h2>About our company</h2>
+                     <p>Lorem ipsum dolor sit amet consectetur adipiscing elit urna velit amet tempor egestas fringilla bibendum vel nisl sed.</p>
+                     <div class="abtimg"> <img class="" src="{{ asset('myassets/images/abtimgone.jpg') }}" alt="image"></div>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-sm-4 col-md-4">
+                  <div class="abtbt">
+                     <h3>100<span>M</span></h3>
+                     <h5>App downloads</h5>
+                     <p>Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-sm-4 col-md-4">
+                  <div class="abtbt">
+                     <h3>20<span>M</span></h3>
+                     <h5>Active users</h5>
+                     <p>Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-sm-4 col-md-4">
+                  <div class="abtbt">
+                     <h3>35<span>+</span></h3>
+                     <h5>Team members</h5>
+                     <p>Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+               </div>
             </div>
-        </section>
-        <!-- Office environment  End-->
-        <!--? Services Area Start -->
-        <section class="categories-area section-padding40">
-            <div class="container">
-                <!-- section Tittle -->
-                <div class="row">
-                    <div class="col-xl-6 col-lg-7 col-md-10 col-sm-11">
-                        <div class="section-tittle mb-60">
-                            <h2>Why take our services?</h2>
-                            <p>Duis aute irure dolor inasfa reprehenderit in voluptate velit esse cillum reeut 
-                            cupidatatfug nulla pariatur. Excepteur sintxsdfas occaecat.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-cat mb-50 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
-                            <div class="cat-icon">
-                                <img src="assets/img/icon/services1.svg" alt="">
-                            </div>
-                            <div class="cat-cap">
-                                <h5>Car wash 100% without detergents</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-cat mb-50 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
-                            <div class="cat-icon">
-                                <img src="assets/img/icon/services2.svg" alt="">
-                            </div>
-                            <div class="cat-cap">
-                                <h5>Efficient surface drying machines</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-cat mb-50 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
-                            <div class="cat-icon">
-                                <img src="assets/img/icon/services3.svg" alt="">
-                            </div>
-                            <div class="cat-cap">
-                                <h5>We have an application</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-cat mb-50 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
-                            <div class="cat-icon">
-                                <img src="assets/img/icon/services4.svg" alt="">
-                            </div>
-                            <div class="cat-cap">
-                                <h5>Safe lacquer protection</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+         </div>
+      </section>
+      <section class="abtimgtext">
+         <div class="container">
+         <div class="row justify-c">
+            <div class="col-lg-6">
+               <div class="abtimgtext-rightimg">
+                  <img class="" src="{{ asset('myassets/images/abtimg.jpg') }}" alt="image">
+               </div>
             </div>
-        </section>
-        <!--? Services Area End -->
-        <!-- Map -->
-        <div class="maps-area maps-area2">
-            <div class="container">
-                <div class="row no-gutters">
-                    <div class="col-lg-7 col-md-7 col-sm-7">
-                        <img src="assets/img/gallery/map.png" alt="" class="w-100">
-                    </div>
-                    <div class="col-lg-5 col-md-5 col-sm-5">
-                        <img src="assets/img/gallery/map-left.png" alt="" class="w-100">
-                    </div>
-                </div>
+            <div class="col-lg-6">
+               <div class="abtimgtext-left">
+                  <h2 class="text-md mb-2">The story and mission behind our company</h2>
+                  <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipiscing elit vel consectetur fusce lorem elit maecenas et faucibus nulla arcu sem. In semper ipsum eget pellentesque. A feugiat vitae id felis rhoncus tristique. Suscipit diam mi massa et ut euismod nibh quis pretium, ut enim proin lobortis turpis sagittis.</p>
+               </div>
             </div>
-        </div>
-    </main>
+         </div>
+      </section>
 @endsection

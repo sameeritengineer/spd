@@ -1,219 +1,120 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Car wash</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-
-    <!-- CSS here -->
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/slicknav.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/progressbar_barfiller.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/gijgo.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/animated-headline.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/fontawesome-all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/themify-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/sp_style.css') }}">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="csrf-token" content="{{ csrf_token() }}">
+      <title>@yield('title')</title>
+      <link rel="icon" href="{{ asset('myassets/images/moblogo.png') }}" type="image/png" sizes="16x16">
+      <link href="{{ asset('myassets/css/style.css') }}" rel="stylesheet">
+      <link href="{{ asset('myassets/css/bootstrap.min.css') }}" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&display=swap" rel="stylesheet">
+      <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+      <link href="{{ asset('myassets/css/owl.carousel.min.css') }}" rel="stylesheet">
+      <link href="{{ asset('myassets/css/owl.carousel.css') }}" rel="stylesheet">
+      <link href="{{ asset('myassets/css/responsive.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-            <header>
-        <!-- Header Start -->
-        <div class="header-area">
-            <div class="main-header ">
-                <div class="header-bottom  header-sticky">
-                    <div class="container-fluid">
-                        <div class="row align-items-center">
-                            <!-- Logo -->
-                            <div class="col-xl-2 col-lg-2">
-                                <div class="logo">
-                                    <a class="car_logo" href="#"><img src="{{ asset('assets/img/sd/logo.jpg') }}" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="col-xl-10 col-lg-10">
-                                <div class="menu-wrapper  d-flex align-items-center justify-content-end">
-                                    <!-- Main-menu -->
-                                    <div class="main-menu d-none d-lg-block">
-                                        <nav>
-                                            <ul id="navigation">                                                                                          
-                                                <li><a href="{{route('myhome')}}">Home</a></li>
-                                                <li><a href="{{route('aboutus')}}">About</a></li>
-                                                <li><a href="{{route('services')}}">services</a></li>
-                                                <li><a href="{{route('contact')}}">Contact</a></li>
-                                                @auth<li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+      <header>
+         <nav class="navbar navbar-expand-lg navbar-light navbarcustom">
+            <a class="navbar-brand" href="#"> <img class="headerlogo" src="{{ asset('myassets/images/logo.png') }}" alt="image"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><img src="{{ asset('myassets/images/imge.png') }}"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav m-auto">
+                  <li class="nav-item ">
+                     <a class="nav-link {{ (request()->routeIs('myhome')) ? 'active' : '' }}" href="{{route('myhome')}}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="#">Book</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link {{ (request()->routeIs('services')) ? 'active' : '' }}" href="{{route('services')}}">Services</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link {{ (request()->routeIs('aboutus')) ? 'active' : '' }}" href="{{route('aboutus')}}">About us</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link {{ (request()->routeIs('contact')) ? 'active' : '' }}" href="{{route('contact')}}">Contact us</a>
+                  </li>
+                  @auth<li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
     Logout
 </a>    </li>@endauth
 <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
     {{ csrf_field() }}
 </form></li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                    <!-- Header-btn -->
-                                    <div class="header-right-btn d-none d-lg-block ml-20">
-                                        <a href="contact.html" class="btn header-btn"><img src="{{ asset('assets/img/sd/smartphone.svg') }}" alt=""> 10 (87) 256-2903</a>
-                                    </div>
-                                </div>
-                            </div> 
-                            <!-- Mobile Menu -->
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               </ul>
             </div>
-        </div>
-        <!-- Header End -->
-    </header>
+         </nav>
+      </header>    
+
         <main>
             @yield('content')
         </main>
 
-         <footer>
-        <div class="footer-wrapper section-bg2"  data-background="{{ asset('assets/img/gallery/footer-bg.png') }}">
-            <!-- Footer Start-->
-            <div class="footer-area footer-padding">
-                <div class="container">
-                    <div class="row justify-content-between">
-                        <div class="col-xl-4 col-lg-4 col-md-5 col-sm-7">
-                            <div class="single-footer-caption mb-50">
-                                <div class="single-footer-caption mb-30">
-                                    <!-- logo -->
-                                    <div class="footer-logo mb-35">
-                                        <a href="index.html"><img src="{{ asset('assets/img/logo/logo2_footer.png') }}" alt=""></a>
-                                    </div>
-                                    <div class="footer-tittle">
-                                        <div class="footer-pera">
-                                            <p>Duis aute irure dolor inasfa reprehenderit in voluptate velit esse cillum reeut cupidatatfug.</p>
-                                        </div>
-                                        <ul class="mb-40">
-                                            <li class="number"><a href="#">(80) 783 367-3904</a></li>
-                                            <li class="number2"><a href="#">contact@carwash.com</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                            <div class="single-footer-caption mb-50">
-                                <div class="footer-tittle">
-                                    <h4>Opening hour</h4>
-                                    <ul>
-                                        <li><a href="#">Mon-Fri (9.00-19.00)</a></li>
-                                        <li><a href="#">Sat (12.00-19.00)</a></li>
-                                        <li><a href="#">Sun <span>(Closed)</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
-                            <div class="single-footer-caption mb-50">
-                                <div class="footer-tittle">
-                                    <h4>Navigation</h4>
-                                    <ul>
-                                        <li><a href="#">Home</a></li>
-                                        <li><a href="#">About</a></li>
-                                        <li><a href="#">Services</a></li>
-                                        <li><a href="#">Contact</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-footer-caption mb-50">
-                                <!-- social -->
-                                <div class="footer-social">
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<section class="footer">
+         <img class="aftertop" src="{{ asset('myassets/images/footerimg.png') }}" alt="image">
+         <img class="screen1" src="{{ asset('myassets/images/mainimage.png') }}" alt="image">
+         <img class="screen2" src="{{ asset('myassets/images/mainimage.png') }}" alt="image">
+         <div class="container-floud">
+         <div class="row no-gutter">
+            <div class="col-md-12">
+               <div class="logoimage">
+                  <img class="footerlogo" src="{{ asset('myassets/images/logo.png') }}" alt="image">
+               </div>
+               <h1>DOWNLOAD NOW</h1>
             </div>
-            <!-- footer-bottom area -->
-            <div class="footer-bottom-area">
-                <div class="container">
-                    <div class="footer-border">
-                        <div class="row">
-                            <div class="col-xl-12 ">
-                                <div class="footer-copy-right text-center">
-                                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- Footer End-->
-      </div>
-  </footer>
-  <!-- Scroll Up -->
-  <div id="back-top" >
-    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
-</div>
+            <div class="col-md-6">
+               <div class="logoimage">
+                  <a href="#"><img class="appstore" src="{{ asset('myassets/images/app-store.png') }}" alt="image"></a>
+               </div>
+            </div>
+            <div class="col-md-6">
+               <div class="logoimage">
+                  <a href="#"><img class="appstore" src="{{ asset('myassets/images/google-play.png') }}" alt="image"></a>
+               </div>
+            </div>
+         </div>
+      </section>
 
 <!-- JS here -->
 <!-- JS here -->
-
-<script src="{{ asset('assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
-<!-- Jquery, Popper, Bootstrap -->
-<script src="{{ asset('assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
-<script src="{{ asset('assets/js/popper.min.js') }}"></script>
-<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-<!-- Jquery Mobile Menu -->
-<script src="{{ asset('assets/js/jquery.slicknav.min.js') }}"></script>
-
-<!-- Jquery Slick , Owl-Carousel Plugins -->
-<script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('assets/js/slick.min.js') }}"></script>
-<!-- One Page, Animated-HeadLin -->
-<script src="{{ asset('assets/js/wow.min.js') }}"></script>
-<script src="{{ asset('assets/js/animated.headline.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.magnific-popup.js') }}"></script>
-
-<!-- Date Picker -->
-<script src="{{ asset('assets/js/gijgo.min.js') }}"></script>
-<!-- Nice-select, sticky -->
-<script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.sticky.js') }}"></script>
-<!-- Progress -->
-<script src="{{ asset('assets/js/jquery.barfiller.js') }}"></script>
-
-<!-- counter , waypoint,Hover Direction -->
-<script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
-<script src="{{ asset('assets/js/waypoints.min.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
-<script src="{{ asset('assets/js/hover-direction-snake.min.js') }}"></script>
-
-<!-- contact js -->
-<script src="{{ asset('assets/js/contact.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.form.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.validate.min.js') }}"></script>
-<script src="{{ asset('assets/js/mail-script.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.ajaxchimp.min.js') }}"></script>
-
-<!-- Jquery Plugins, main Jquery -->  
-<script src="{{ asset('assets/js/plugins.js') }}"></script>
-<script src="{{ asset('assets/js/main.js') }}"></script>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <script src="{{ asset('myassets/js/bootstrap.min.js') }}"></script>
+      <script src="{{ asset('myassets/js/owl.carousel.js') }}"></script>
+      <script src="{{ asset('myassets/js/owl.carousel.min.js') }}"></script>
+      <script>
+         $('#app-showcase').owlCarousel({
+                  loop: true,
+                  margin: 30,
+                  autoplay:true,
+                 autoplayTimeout:3000,
+                 smartSpeed: 2000, // duration of change of 1 slide;
+                  nav: true,
+                  navigation: true,
+                  responsiveClass: true,
+                  responsive: {
+                      0: {
+                          items: 1,
+                          nav: true
+                      },
+                      600: {
+                          items: 1,
+                          nav: false
+                      },
+                      1000: {
+                          items: 2,
+                          nav: true
+                      },
+                      1400: {
+                          items: 2,
+                          nav: true
+                      }
+                  }
+              })
+      </script>
 
 <script type="text/javascript">window.setTimeout("document.getElementById('successMessage').style.display='none';", 5000); </script>
 <script type="text/javascript">
@@ -422,7 +323,5 @@ jQuery('#getplateForm').on('submit', function (e) {
             });
     } );
     </script>
-
-    </div>
 </body>
 </html>
