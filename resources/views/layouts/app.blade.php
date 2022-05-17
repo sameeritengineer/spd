@@ -14,6 +14,7 @@
       <link href="{{ asset('myassets/css/owl.carousel.min.css') }}" rel="stylesheet">
       <link href="{{ asset('myassets/css/owl.carousel.css') }}" rel="stylesheet">
       <link href="{{ asset('myassets/css/responsive.css') }}" rel="stylesheet">
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 </head>
 <body>
       <header>
@@ -30,9 +31,18 @@
                   <li class="nav-item">
                      <a class="nav-link" href="#">Book</a>
                   </li>
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                      <a class="nav-link {{ (request()->routeIs('services')) ? 'active' : '' }}" href="{{route('services')}}">Services</a>
-                  </li>
+                  </li> -->
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Services
+                     </a>
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                       <a class="dropdown-item" href="#">Alloy Wheel</a>
+                       <a class="dropdown-item" href="{{route('services')}}">Carwash</a>
+                     </div>
+                   </li>
                   <li class="nav-item">
                      <a class="nav-link {{ (request()->routeIs('aboutus')) ? 'active' : '' }}" href="{{route('aboutus')}}">About us</a>
                   </li>
@@ -85,6 +95,7 @@
       <script src="{{ asset('myassets/js/bootstrap.min.js') }}"></script>
       <script src="{{ asset('myassets/js/owl.carousel.js') }}"></script>
       <script src="{{ asset('myassets/js/owl.carousel.min.js') }}"></script>
+      <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
       <script>
          $('#app-showcase').owlCarousel({
                   loop: true,

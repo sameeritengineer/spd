@@ -21,8 +21,8 @@
             <div class="row">
                <div class="col-lg-12 col-sm-12 col-md-12">
                   <div class="topabt">
-                     <h2>About our company</h2>
-                     <p>Lorem ipsum dolor sit amet consectetur adipiscing elit urna velit amet tempor egestas fringilla bibendum vel nisl sed.</p>
+                     <h2>Cleaning Cars Is What We Do !</h2>
+                     <p>Since our founding in 2019, we’ve worked with numerous clients and influences throughout the country. Great service begins and ends with experienced and friendly professionals, which is why we put so much consideration into selecting only the best to join our team. We complete projects efficiently and on schedule, and go above and beyond to form lasting relationships with our clients. We have a small team and work very closely together to help undertake a task if need be and to get the job done. Our experience and reviews shows your in the right hands, book an appointment now!</p>
                      <div class="abtimg"> <img class="" src="{{ asset('myassets/images/abtimgone.jpg') }}" alt="image"></div>
                   </div>
                </div>

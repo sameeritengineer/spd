@@ -17,6 +17,7 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth']],function(){
 Route::get('/summary', 'MainworkController@summary')->name('summary');
+Route::get('/faq', 'MainworkController@faq')->name('faq');
 });
 
 Route::get('/', 'MainworkController@index')->name('myhome');

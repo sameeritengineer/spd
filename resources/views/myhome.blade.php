@@ -30,10 +30,10 @@
             <div class="row">
                <div class="col-md-12">
                   <div class="welcomeleft" >
-                     <h2>Mobile Car Wash</h2>
-                     <p>Originally released in 2015, the adidas CONFIRMED app helped fans of the Three Stripes get to the most exclusive releases at the touch of a button, keeping them well clear of the queues. As of today, CONFIRMED is back. And it is much more than a sneaker app.
-                        adidas’ Senior Director of Digital Strategy, Tareq Nazlawy explains, “We’re thrilled to release the new CONFIRMED app and share our best products and stories with a fidelity that we haven’t been able to before. There’s a whole extended family behind each creation and each partnership; with a dedicated app we can create experiences which celebrate that richness in new and exciting ways.”
+                     <h2>Mobile Car Wash & Detailing</h2>
+                     <p>Originally released in 2015, the adidas CONFIRMED app helped fans of the Three Stripes get to the most exclusive releases at the touch of a button, keeping them well clear of the queues. As of today, CONFIRMED is back. And it is much more than a sneaker app. adidas’ Senior Director of Digital Strategy, Tareq Nazlawy explains, “We’re thrilled to release the new CONFIRMED app and share our best products and stories with a fidelity that we haven’t been able to before. There’s a whole extended family behind each creation and each partnership; with a dedicated app we can create experiences which celebrate that richness in new and exciting ways.”
                      </p>
+                     <!-- <a href="https://wa.me/message/KJHGFFY5VTJ7A1" target="_blank" class="emergency_call">Emergency Call 24/7</a> -->
                   </div>
                </div>
             </div>
@@ -45,7 +45,7 @@
             <div class="row no-gutter justify-c">
                <div class="col-md-6">
                   <div class="welcometext-left" >
-                     <h2>Premium Valet Service</h2>
+                     <h2>Mobile Diamond Cut & Alloy Wheel Refurbishment</h2>
                      <p>Originally released in 2015, the adidas CONFIRMED app helped fans of the Three Stripes get to the most exclusive releases at the touch of a button, keeping them well clear of the queues. As of today, CONFIRMED is back. And it is much more than a sneaker app.
                         adidas’ Senior Director of Digital Strategy, Tareq Nazlawy explains, 
                         CONFIRMED not only caters to the Three Stripes fanatics and sneakerheads with access to some of their most limited and premium drops but also takes a uniquely community-driven approach.

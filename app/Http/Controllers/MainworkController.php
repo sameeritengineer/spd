@@ -333,7 +333,14 @@ class MainworkController extends Controller
     }
 
     public function summary(){
-        return view('webapp.summary');
+        $id = Auth::id();
+        $get_address = UserInformation::where('user_id',$id)->first();
+        $get_cardata = UserCarData::where('user_id',$id)->where('mode','1')->first();
+        return view('webapp.summary',compact('get_address','get_cardata'));
+    }
+
+    public function faq(){
+        return view('webapp.faq');
     }
     
 }

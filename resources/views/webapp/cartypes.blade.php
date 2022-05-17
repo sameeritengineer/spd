@@ -2,7 +2,7 @@
 
 @section('content')
 <main>
-       <section class="contact-section">
+       <section class="section_cartype">
             <div class="container">
               <div>
                 <a class="back_page bk_postcode" href="{{route('getpostcode')}}"><span>Back</span></a>
@@ -150,7 +150,7 @@
 </div>  
       
           
-<div class="form-group mt-3">
+<div class="row">
                                 <button type="submit" class="button button-contactForm boxed-btn main_submitform">Send</button>
                             </div>
           </form>
