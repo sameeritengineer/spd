@@ -21,8 +21,11 @@ use App\User;
 use App\Role;
 use App\UserInformation;
 use App\UserCarData;
+use App\BookingCount;
+use App\Promo;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MainworkController extends Controller
 {
@@ -242,7 +245,7 @@ class MainworkController extends Controller
                 if (!in_array($start, $booked_time)){
                  $time[$i]['start'] = $start;
                  $finaltime = date("g:i a", strtotime($start));;
-                   $data .= '<div class="selecotr-item"><input type="radio" id="radio'.$i.'" name="selector" class="selector-item_radio"><label for="radio'.$i.'" class="selector-item_label">'.$finaltime.'</label></div>';
+                   $data .= '<div class="selecotr-item"><input type="radio" id="radio'.$i.'" value="'.$start.'" name="selector" class="selector-item_radio"><label for="radio'.$i.'" class="selector-item_label">'.$finaltime.'</label></div>';
                 }
                 
                 //$time[$i]['end'] = $end;
@@ -253,8 +256,18 @@ class MainworkController extends Controller
 
      public function main_form(Request $request)
     {
-        
-      $rules = [
+      if($request->formvaluedata == 1){
+        session()->put('session_time', time());
+        session()->put('dealtype', $request->dealtype);
+        session()->put('book_date', $request->book_date);
+        session()->put('book_time', $request->selector);
+        return response()->json(['status'=>true,'message'=>'Thanks for registering with Splash And Drips']);
+      }else{
+        session()->put('session_time', time());
+        session()->put('dealtype', $request->dealtype);
+        session()->put('book_date', $request->book_date);
+        session()->put('book_time', $request->selector);
+        $rules = [
             'name'=>'required',
             'email'=>'required|string|email|max:255|unique:users',
             'password'=>'required|string|min:6',
@@ -330,17 +343,273 @@ class MainworkController extends Controller
                 return response()->json(['status'=>false,'message'=>'Something error while registering! Try after some time!.']);
             }
         }
+      }
+      
     }
 
-    public function summary(){
+    public function summary(Request $request){
+        $time = Session::get('session_time');
+        if (time() - $time < 300) { // 300 seconds = 5 minutes
+    // they're within the 5 minutes so save the details to the database
+         $data = [];
+         $dealtype = Session::get('dealtype');
+         $deal_data = Deal::find($dealtype);
+         $data['dealtype'] = $deal_data->name;
+         $data['dealimage'] = $deal_data->image;
+         $data['price'] = $deal_data->price;
+         $data['s_price'] = 2.99;
+         $data['t_price'] = $data['price']+2.99;
+         $combined_date_and_time = Session::get('book_date') . ' ' . Session::get('book_time');
+         $past_date = strtotime($combined_date_and_time);
+         $data['datetime'] = date("F d, Y h:i A", $past_date);
+
+         if(isset($request->apply_promo) && !empty($request->apply_promo)){
+           $check_promo = Promo::where('promo_code',$request->apply_promo)->first();
+           if($check_promo){
+            $data['promo_name'] = $check_promo->promo_code;
+            $data['promo_discount'] = $check_promo->discount;
+            $data['promo_status'] = 1;
+            session()->put('promo_id', $check_promo->id);
+            }else{
+            $data['promo_name'] = null;
+            $data['promo_discount'] = null;
+            $data['promo_status'] = 0;
+            } 
+         }else{
+           $data['promo_name'] = null;
+           $data['promo_status'] = 1;
+         }
+
+
         $id = Auth::id();
         $get_address = UserInformation::where('user_id',$id)->first();
         $get_cardata = UserCarData::where('user_id',$id)->where('mode','1')->first();
-        return view('webapp.summary',compact('get_address','get_cardata'));
+        return view('webapp.summary',compact('get_address','get_cardata','data'));
+      }else {
+          // sorry, you're out of time
+         Session::forget('dealtype'); // and unset any other session vars for this task
+         Session::forget('book_date');
+         Session::forget('book_time');
+         Session::forget('promo_id');
+         return redirect()->route('book');
+      }
+        
+        
+    }
+    public function confirm_booking(){
+      $time = Session::get('session_time');
+        if (time() - $time < 300) { // 300 seconds = 5 minutes
+    // they're within the 5 minutes so save the details to the database
+         $data = [];
+         $dealtype = Session::get('dealtype');
+         $deal_data = Deal::find($dealtype);
+         $data['dealtype'] = $deal_data->name;
+         $data['dealimage'] = $deal_data->image;
+         $deal_data = Deal::find($dealtype);
+         $data['deal_id'] = $dealtype;
+         $data['price'] = $deal_data->price;
+         $data['s_price'] = 2.99;
+         $data['t_price'] = $data['price']+2.99;
+         $combined_date_and_time = Session::get('book_date') . ' ' . Session::get('book_time');
+         $past_date = strtotime($combined_date_and_time);
+         $data['datetime'] = date("F d, Y h:i A", $past_date);
+         $data['date'] = Session::get('book_date');
+         $data['time'] = Session::get('book_time');
+         $data['promo_id'] = Session::get('promo_id');
+
+         if(isset($data['promo_id']) && !empty($data['promo_id'])){
+           $check_promo = Promo::where('id',$data['promo_id'])->first();
+           if($check_promo){
+            $data['promo_name'] = $check_promo->promo_code;
+            $data['promo_discount'] = $check_promo->discount;
+            $data['promo_status'] = 1;
+            session()->put('promo_id', $check_promo->id);
+            }else{
+            $data['promo_name'] = null;
+            $data['promo_discount'] = null;
+            $data['promo_status'] = 0;
+            } 
+         }else{
+           $data['promo_name'] = null;
+           $data['promo_status'] = 1;
+         }
+         
+        $id = Auth::id();
+        $get_address = UserInformation::where('user_id',$id)->first();
+        $get_cardata = UserCarData::where('user_id',$id)->where('mode','1')->first();
+        return view('webapp.payment',compact('get_address','get_cardata','data'));
+      }else {
+          // sorry, you're out of time
+         Session::forget('dealtype'); // and unset any other session vars for this task
+         Session::forget('book_date');
+         Session::forget('book_time');
+         Session::forget('promo_id');
+         return redirect()->route('book');
+      }
     }
 
     public function faq(){
         return view('webapp.faq');
     }
+
+    public function account(Request $request){
+        $user = User::whereHas('roles',function($q){ $q->where('role_name','user'); })->find($request->user()->id,['id','name','email','mobile','image']);
+      $user->user_information = $user->user_information;
+      $user->carinfo = UserCarData::where('user_id', $user->id)->where('mode','1')->first(['licence_plate','make','model','year','cartype','mode']);
+      if($user->carinfo)
+      {
+          $user->cartype = Cartype::find($user->carinfo['cartype']);
+      }
+      $booking_count =  BookingCount::where('user_id', $user->id)->first(['booking_count']);
+      if($booking_count)
+      {
+        $user->booking_count = $booking_count['booking_count'];
+      }
+      else
+      {
+        $user->booking_count = 0;
+      }
+
+      $all_cars = UserCarData::where('user_id', $request->user()->id)->get();
+        $total = count($all_cars);
+        for ($i=0; $i < $total; $i++) { 
+            $cartype = Cartype::find($all_cars[$i]['cartype']);
+            $all_cars[$i]['cartype'] = $cartype->name;
+        }
+      
+        return view('webapp.account',compact('user','all_cars'));
+    }
+
+    public function edit_profile(Request $request)
+    {
+        //return $request->all();
+      $rules = [
+        'name'=>'required',
+        'mobile'=>'required|unique:users,mobile,'.$request->user()->id,
+        'address'=>"required",
+        'postcode'=>'required', 
+        'city'=>'required'
+      ];
+  
+      $validator = Validator::make($request->all(), $rules);
+      if ($validator->fails()) 
+      {
+        return response()->json(['status' => false,'message' => $validator->errors()->first()]);
+      }
+      else
+      {
+        $user = User::whereHas('roles',function($q){ $q->where('role_name','user'); })->find($request->user()->id);
+        if(!is_null($user)):
+          $user->name = $request->name;
+          $user->mobile = $request->mobile;
+          $image = $request->file('image');
+            if ($image){
+                $name = time() . '.' . $image->getClientOriginalExtension(); 
+                $image_full_name = 'img_' . $name;
+                $filePath = '/splashdrip/users/' . $image_full_name;
+                Storage::disk('s3')->put($filePath, file_get_contents($image));
+                $url = config('services.base_url')."/splashdrip/users/" . $image_full_name;
+                $user->image = $url;   
+            }
+          if($user->save())
+          {
+            $info = $user->user_information ?? new UserInformation;
+            $info->user_id = $user->id;
+            $info->address = $request->address;
+            $info->address_line = $request->address_line ?? null;
+            $info->city = $request->city;
+            $info->postcode = $request->postcode;
+            $info->save();
+            $user->user_information = $info;
+            return response()->json(['status'=>true,'message'=>'Your profile has been updated.','payload'=>$user]);
+          }
+          else
+          {
+            return response()->json(['status'=>false,'message'=>'Something error while updating your profile! Try after some time.']);
+          }
+        else:
+          return response()->json(['status'=>false,'message'=>'No user found.']);
+        endif;
+      }
+    }
+    public function remove_car(Request $request)
+    {
+        $car = UserCarData::find($request->del_car);
+            if($car):
+                 $car->delete(); 
+                return redirect()->route('my-account')->with(['alert'=>'success','message'=>'Car removed successfully']);
+            else:
+                return redirect()->route('my-account')->with(['alert'=>'danger','message'=>'Something went wrong.']);
+            endif;
+    }
+    public function book(){
+        $deals = Deal::orderBy('id','asc')->get();
+        return view('webapp.book',compact('deals'));
+    }
+    public function add_car(){
+        $cartypes = Cartype::orderBy('id','asc')->get();
+        return view('webapp.addcar',compact('cartypes'));
+    }
+    public function add_newcar(Request $request)
+    {
+        $rules = ['cartype'=>'required','licence_plate'=>'required|unique:user_car_data','make'=>'required','model'=>'required','year'=>'required'];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) 
+        {
+            return response()->json(['status' => false,'message' => $validator->errors()->first()]);
+        }
+        else
+        {
+            $customer_id = $request->user()->id;
+            $user_car_data = new UserCarData;
+            $user_car_data->user_id = $customer_id;
+            $user_car_data->licence_plate = $request->licence_plate;
+            $user_car_data->make = $request->make;
+            $user_car_data->model = $request->model;
+            $user_car_data->year = $request->year;
+            $user_car_data->cartype = $request->cartype;
+            if($user_car_data->save()):
+            return response()->json(['status'=>true,'message'=>'Car added successfully']);
+            else:
+                return response()->json(['status'=>false,'message'=>'Something went wrong.']);
+            endif;
+        }
+    }
+    public function change_car(){
+        $cartypes = Cartype::orderBy('id','asc')->get();
+        return view('webapp.changecar',compact('cartypes'));
+    }
+
+    public function addpayment_method_data(Request $request)
+    {
+
+        $rules = [
+            'cartype_id'=>'required',
+            'deal_id'=>'required',
+            'date'=>'required',
+            'time'=>'required',
+            /*'vat'=>'required',*/
+            'service_fee'=>'required',
+            'total'=>'required',
+            'licence_plate'=>'required',
+            'make'=>'required',
+            'model'=>'required',
+            'year'=>'required',
+            'booking_type' => 'required'
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) 
+        {
+            return redirect()->route('confirm-booking')->with(['alert'=>'danger','message'=>$validator->errors()->first()]);
+        }
+        else
+        {
+          dd($request->all());
+        }
+
+      
+    }
+
+    
     
 }

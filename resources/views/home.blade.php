@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+<section class="Banner_Inner">
+         <div class="container-floud">
+            <div class="row  justify-c">
+               <div class="col-md-12 text-center">
+                  <h2>SETTINGS</h2>
+                 </div> 
+            </div>
+         </div>
+      </section> 
 <section class="section_cartype">
 <div class="container">
     <div class="row justify-content-center">
@@ -16,10 +25,16 @@
                     @endif
 
                     <ul>
-                        <li><a href="">My Account</a></li>
+                        <li><a href="{{route('my-account')}}">My Account</a></li>
                         <li><a href="{{route('faq')}}">Faq</a></li>
                         <li><a href="{{route('contact')}}">Contact Us</a></li>
                         <li><a href="">Change Password</a></li>
+                        @auth<li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+    Logout
+</a>    </li>@endauth
+<form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+    {{ csrf_field() }}
+</form></li>
                     </ul>
 
                     <!-- {{ __('You are logged in!') }} -->

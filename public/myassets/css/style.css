@@ -202,7 +202,7 @@ nav.navbar.navbar-expand-lg.navbar-light.navbarcustom {
   font-size: 17px;
 }
 .navbarcustom ul.navbar-nav.m-auto li {
-  margin-left: 73px!important;
+  margin-left: 50px!important;
 }
 .dropdown-menu {
   padding: 0px!important;
@@ -728,7 +728,7 @@ label.error,.mainform_error {
 .car_types h3.card-title {
     font-size: 12px;
 }
-button#next-1,button#next-2 {
+button#next-1,button#next-2,button#add_car {
     float: left;
     margin: 20px 26px;
     border: none;
@@ -753,6 +753,10 @@ button#next-1,button#next-2 {
 .inner_selection_cartype p.cartype_error {
     margin: 0 25px;
     color: red;
+}
+.inner_selection_cartype p.cartype_success {
+    margin: 0 25px;
+    color: green;
 }
 .licence_error,.worktime_error{
     color: red;
@@ -921,7 +925,6 @@ p.addressp {
 }
 section.section_cartype {
     padding: 50px;
-    margin: 50px 0;
 }
 h2.contact-title{
     margin: 20px;
@@ -943,4 +946,26 @@ button.button.button-contactForm.boxed-btn.main_submitform {
     max-width: 200px;
     text-align: center;
     margin: 0 auto;
+}
+section.Banner_Inner {
+    /* background: #000; */
+    background: #1c529b;
+    padding: 35px;
+}
+section.Banner_Inner h2{
+  color:#fff;
+}
+img.img-lg.rounded-circle.border.shadow {
+    width: 200px;
+    height: 200px;
+}
+.car_option {
+    margin: 20px;
+}
+.innerbook .car_deals {
+    display: block;
+}
+p.addressp.bold {
+    font-size: 20px;
+    font-weight: 800;
 }

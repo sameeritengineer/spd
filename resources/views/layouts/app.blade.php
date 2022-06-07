@@ -13,7 +13,11 @@
       <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
       <link href="{{ asset('myassets/css/owl.carousel.min.css') }}" rel="stylesheet">
       <link href="{{ asset('myassets/css/owl.carousel.css') }}" rel="stylesheet">
+      <script src="https://js.stripe.com/v3/"></script>
+      <script src="{{ asset('myassets/js/index.js') }}"></script>
       <link href="{{ asset('myassets/css/responsive.css') }}" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="{{ asset('myassets/css/base.css') }}" data-rel-css="" />
+      <link rel="stylesheet" type="text/css" href="{{ asset('myassets/css/example2.css') }}" data-rel-css="" />
       <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 </head>
 <body>
@@ -28,9 +32,17 @@
                   <li class="nav-item ">
                      <a class="nav-link {{ (request()->routeIs('myhome')) ? 'active' : '' }}" href="{{route('myhome')}}">Home</a>
                   </li>
+                  @auth
                   <li class="nav-item">
-                     <a class="nav-link" href="#">Book</a>
+                     <a class="nav-link {{ (request()->routeIs('book')) ? 'active' : '' }}" href="{{route('book')}}">Book</a>
                   </li>
+                  </li>
+                  @else
+                  <li class="nav-item">
+                     <a class="nav-link {{ (request()->routeIs('getpostcode')) ? 'active' : '' }}" href="{{route('getpostcode')}}">Book</a>
+                  </li>
+                 @endauth
+                  
                   <!-- <li class="nav-item">
                      <a class="nav-link {{ (request()->routeIs('services')) ? 'active' : '' }}" href="{{route('services')}}">Services</a>
                   </li> -->
@@ -49,12 +61,9 @@
                   <li class="nav-item">
                      <a class="nav-link {{ (request()->routeIs('contact')) ? 'active' : '' }}" href="{{route('contact')}}">Contact us</a>
                   </li>
-                  @auth<li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
-    Logout
-</a>    </li>@endauth
-<form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
-    {{ csrf_field() }}
-</form></li>
+                  @auth<li class="nav-item">
+                     <a class="nav-link {{ (request()->routeIs('home')) ? 'active' : '' }}" href="{{route('home')}}">Settings</a>@endauth
+                  </li>
                </ul>
             </div>
          </nav>
@@ -96,6 +105,7 @@
       <script src="{{ asset('myassets/js/owl.carousel.js') }}"></script>
       <script src="{{ asset('myassets/js/owl.carousel.min.js') }}"></script>
       <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+      <script src="{{ asset('myassets/js/example2.js') }}"></script>
       <script>
          $('#app-showcase').owlCarousel({
                   loop: true,
@@ -127,12 +137,63 @@
               })
       </script>
 
-<script type="text/javascript">window.setTimeout("document.getElementById('successMessage').style.display='none';", 5000); </script>
+<!-- <script type="text/javascript">window.setTimeout("document.getElementById('successMessage').style.display='none';", 5000); </script> -->
 <script type="text/javascript">
 $.ajaxSetup({
   headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
   }
+});
+jQuery('.del_car').on('click', function (e) {
+   var carid = $(this).attr('data-carid');
+   $('#del_car').val(carid);
+  });
+jQuery('#editProfileForm').on('submit', function (e) {
+
+  if (document.getElementById("editProfileForm").checkValidity()) {
+     e.preventDefault();
+     var token = $('meta[name="csrf-token"]').attr('content');
+     var form = $("#editProfileForm");
+     var formData = new FormData(this);
+      $.ajax({
+             _token: token,
+             url: "{{ route('edit_profile') }}",
+             type: "POST",
+             data: formData,
+             processData: false,
+             contentType: false,
+                     success: function(response) {
+                       console.log(response);
+                       if(response.status == false){
+                       $('.mainform_error').text(response.message);
+                       }else{
+                        window.location.href = "{{ route('my-account')}}";
+                       }
+                     },
+                  });
+    }
+    return true;
+
+});
+jQuery('#mainFormInner').on('submit', function (e) {
+     e.preventDefault();
+     var token = $('meta[name="csrf-token"]').attr('content');
+     var form = $("#mainFormInner");
+     
+      $.ajax({
+             _token: token,
+             url: "{{ route('main_form') }}",
+             type: "POST",
+             data: form.serialize(),
+                     success: function(response) {
+                       console.log(response);
+                       if(response.status == false){
+                       $('.mainform_error').text(response.message);
+                       }else{
+                        window.location.href = "{{ route('summary')}}";
+                       }
+                     },
+                  });
 });
 jQuery('#mainForm').on('submit', function (e) {
     if (document.getElementById("getplateForm").checkValidity()) {
@@ -150,7 +211,7 @@ jQuery('#mainForm').on('submit', function (e) {
                        if(response.status == false){
                        $('.mainform_error').text(response.message);
                        }else{
-                        window.location.href = "{{ route('home')}}";
+                        window.location.href = "{{ route('summary')}}";
                        }
                      },
                   });
@@ -173,8 +234,9 @@ jQuery('#getplateForm').on('submit', function (e) {
                  "value": value,
                      },
                      success: function(response) {
-                        if(response.error == 1){
+                        if(response.error == 0){
                          $(".licence_error").html('License Plate not Found');
+                         $(".response_data").html("");
                         }else{
                           $("#value_car").val(JSON.stringify(response));
                           var table = "<table><tr><th>Make</th><th>Model</th><th>Year</th></tr><tr><td>"+response.make+"</td><td>"+response.model+"</td><td>"+response.yearOfManufacture+"</td></tr></table>";
@@ -189,6 +251,45 @@ jQuery('#getplateForm').on('submit', function (e) {
 });
 </script>
 <script type="text/javascript">
+  $(document).on('click','#add_car',function(){
+    if($('input[name=cartype]:checked').length > 0) {
+     $('.cartype_error').text('');
+     var value = $('#getplateInput').val();
+     var carval = $('#value_car').val();
+     var carvalues = JSON.parse(carval);
+     var cartype = $('input[name=cartype]:checked').val();
+     if(value == ''){
+        $('.licence_error').text('Please Seacrh your license Plate');
+     }else{
+        var token = $('meta[name="csrf-token"]').attr('content');
+       $.ajax({
+                     _token: token,
+                     url: "{{ route('add_newcar') }}",
+                     type: "POST",
+                     data: {
+                         "cartype": cartype,
+                         "licence_plate": value,
+                         "make": carvalues.make,
+                         "model": carvalues.model,
+                         "year": carvalues.yearOfManufacture,
+                             },
+                             success: function(response) {
+                              if(response.status == false){
+                                $('.cartype_error').html(response.message);
+                                }else{
+                                    $('.cartype_success').html(response.message);
+                                    setTimeout(function () {
+                                     window.location.href = "{{ route('book')}}";
+                                 }, 2500);
+                                    
+                                }
+                             },
+                          });
+     }
+    }else{
+      $('.cartype_error').text('Please Select Your Cartype');
+    }
+  });
   $(document).on('click','#next-1',function(){
     if($('input[name=cartype]:checked').length > 0) {
      $('.cartype_error').text('');
@@ -227,8 +328,11 @@ jQuery('#getplateForm').on('submit', function (e) {
    $(".row.work_time").css("display", "inline-flex");
    //$('.row.work_time').show();
    $('h2.contact-title.ct-work_time').show();
+   $('.car_option').hide();
+   $('h2.contact-title.ct-deals-inner').hide();
 
    var date = $.datepicker.formatDate('yy-mm-dd', new Date());
+   $('#book_date').val(date);
     var token = $('meta[name="csrf-token"]').attr('content');
    $.ajax({
                      _token: token,
@@ -256,6 +360,8 @@ jQuery('#getplateForm').on('submit', function (e) {
      $('.deal_id').prop('checked', false);
      $('h2.contact-title.ct-work_time').hide();
      $('.row.work_time').hide();
+     $('.car_option').show();
+     $('h2.contact-title.ct-deals-inner').show();
   });
   $(document).on('click','.Si-deal',function(){
    var deal_id = $(this).attr('data-did');
@@ -285,8 +391,9 @@ jQuery('#getplateForm').on('submit', function (e) {
      $('h2.contact-title.ct-work_time').hide();
      $('h2.contact-title.ct-register').show();
      $('.main_submitform').show();
+     $('.mainFormInnerSubmit').click();
   }else{
-      $('.worktime_error').text('Please Select Your Cartype');
+      $('.worktime_error').text('Please Select Date and Time Slot');
     }
 
  });
@@ -310,6 +417,7 @@ jQuery('#getplateForm').on('submit', function (e) {
                 dateFormat: 'yy-mm-dd',
                  onSelect: function() {
                     var date = this.value;
+                    $('#book_date').val(date);
                     var token = $('meta[name="csrf-token"]').attr('content');
                     $.ajax({
                      _token: token,

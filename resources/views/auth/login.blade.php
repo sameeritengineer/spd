@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+<section class="Banner_Inner">
+         <div class="container-floud">
+            <div class="row  justify-c">
+               <div class="col-md-12 text-center">
+                  <h2>LOGIN</h2>
+                 </div> 
+            </div>
+         </div>
+      </section>  
 <section class="section_cartype">
 <div class="container">
     <div class="row justify-content-center">

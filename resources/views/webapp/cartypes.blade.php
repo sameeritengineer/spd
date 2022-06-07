@@ -19,6 +19,7 @@
                     </div>
                     <div class="col-lg-8">
                 <form id="mainForm">
+                  <input type="hidden" id="formvaluedata" name="formvaluedata" value="0">
                        <div class="row car_types">
                 @foreach($cartypes as $cartype)
                 <div class="card col-md-2">
