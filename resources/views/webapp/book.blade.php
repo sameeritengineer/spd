@@ -70,14 +70,16 @@
                </div>
             </div>
             <div class="stepfourcontainer work_time">
-              <div class="col-lg-6"><div id="datepicker"></div></div>
-              <div class="col-lg-6">
+            <div class="row">
+              <div class="col-md-6"><div id="datepicker"></div></div>
+              <div class="col-md-6">
                   <div class="selector selector_worktime">
                       <!-- <div class="selecotr-item">
                           <input type="radio" id="radio1" name="selector" class="selector-item_radio">
                           <label for="radio1" class="selector-item_label">9 AM</label>
                       </div>-->
                   </div>
+              </div>
               </div>
               <div class="inner_selection_cartype">
               <p class="worktime_error"></p>
