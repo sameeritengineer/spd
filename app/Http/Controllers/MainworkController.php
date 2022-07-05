@@ -568,11 +568,11 @@ class MainworkController extends Controller
         $get_address = UserInformation::where('user_id',$id)->first();
         $get_cardata = UserCarData::where('user_id',$id)->where('mode','1')->first();
 
-        Stripe::setApiKey(config('stripe.stripe_secret'));
+        /*Stripe::setApiKey(config('stripe.stripe_secret'));
          $user = \App\User::whereHas('roles',function($q){ $q->where('role_name','user'); })->find($id);
         if(!is_null($user)):
                 $cards = Customer::allSources($user->stripe_customer);
-        endif;
+        endif;*/
         return view('webapp.payment',compact('get_address','get_cardata','data'));
       }else {
           // sorry, you're out of time
