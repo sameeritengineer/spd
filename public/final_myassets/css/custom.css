@@ -1,0 +1,205 @@
+p.licence_error,.cartype_error,.worktime_error,.mainform_error {
+    color: red;
+}
+a.serviceincbtn.pnone.bk_cars {
+    display: none;
+}
+a.serviceincbtn.pnone.bk_deals {
+    display: none;
+}
+a.serviceincbtn.pnone.bk_worktime {
+    display: none;
+}
+h2.pagetitlemain.ct-deals {
+    display: none;
+}
+h2.pagetitlemain.ct-work_time {
+    display: none;
+}
+h2.pagetitlemain.ct-register {
+    display: none;
+}
+#next-2 {
+    display: none;
+}
+#next-3 {
+    display: none;
+}
+
+
+.stepthreecontainer.car_deals {
+    display: none;
+}
+.stepfourcontainer.work_time {
+    display: none;
+}
+.stepcreateaccount {
+    display: none;
+}
+
+.modal-body ul {
+    list-style: none;
+}
+
+.innerbook .stepthreecontainer.car_deals {
+    display: block;
+}
+.mainFormInnerSubmit{
+    display: none;
+}
+
+button.btnapplypromo {
+    color: #0B3890;
+    background: #fff;
+    border-radius: 5px;
+    padding: 6px 14px;
+    float: left;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 2px solid #002d84;
+}
+button.btnremovepromo {
+    color: #E45757;
+    background: #fff;
+    border-radius: 5px;
+    padding: 6px 14px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 2px solid #E45757;
+    float: right;
+}
+/*span.jobstatus {
+    font-weight: 500;
+    padding: 5px;
+    ,: ;
+    animation: 1;
+    padding: 5px 20px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0px 4px 13px rgb(0 0 0 / 1%);
+    border-radius: 31.5px;
+    margin-bottom: 10px;
+}*/
+.col-md-12.bidcl {
+    margin-bottom: 10px;
+}
+/*span.jobstatus.pending {
+    background: #EDF3FF;
+}*/
+span.jobstatus.confirmed {
+    color: #31b36f;
+}
+span.jobstatus.pending {
+    color: #94b4f5;
+}
+
+.loader {
+  position: relative;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 70px;
+  height: 70px;
+  left:50%;
+  top:50%;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+#overlay{
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: .5;
+    z-index: 9999;
+    display: none
+}
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.car_option a {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+    .payment
+    {
+        border:1px solid #f2f2f2;
+        height:280px;
+        border-radius:20px;
+        background:#fff;
+    }
+.payment_header {
+    background: #0B3890;
+    padding: 20px;
+    border-radius: 20px 20px 0px 0px;
+}
+   
+   .check
+   {
+       margin:0px auto;
+       width:50px;
+       height:50px;
+       border-radius:100%;
+       background:#fff;
+       text-align:center;
+   }
+   
+   .check i
+   {
+       vertical-align:middle;
+       line-height:50px;
+       font-size:30px;
+   }
+
+    .content 
+    {
+        text-align:center;
+    }
+
+    .content  h1
+    {
+        font-size:25px;
+        padding-top:25px;
+    }
+
+    .content a
+    {
+        width:200px;
+        height:35px;
+        color:#fff;
+        border-radius:30px;
+        padding:5px 10px;
+        background:#0B3890;
+        transition:all ease-in-out 0.3s;
+    }
+
+    .content a:hover
+    {
+        text-decoration:none;
+        background:#000;
+    }
+
+.payment p {
+    margin: 20px;
+}
+
+.payment h1.alert.success {
+    color: green;
+}

@@ -23,7 +23,17 @@ use App\UserInformation;
 use App\UserCarData;
 use App\BookingCount;
 use App\Promo;
+use App\Faq;
+use App\Jobimages;
+use URL;
 use Auth;
+use Stripe\Stripe;
+use Stripe\Customer;
+use Stripe\Charge;
+use App\UserChargeDetails;
+use App\PushNotification;
+use App\Mail\BookingMail;
+use App\ApplyPromo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -50,10 +60,122 @@ class MainworkController extends Controller
     }
     public function contact()
     {
-        return view('contact');
-
+        if (Auth::check())
+        {
+          $id = Auth::id();
+          $user_data = User::where('id',$id)->first();
+         return view('webapp.contactsetting',compact('user_data'));
+        }else{
+          return view('contact');  
+        }
     }
+    public function change_password(){
+      return view('webapp.changepassword'); 
+    }
+    public function update_password(Request $request)
+    {   
+        $this->validate($request,['op'=>"required", 'up'=>"required|string|min:6"]);
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        if(\Hash::check($request->op, $user->password)) 
+        { 
+            $password = \Hash::make($request->up);
+            $user->password = $password;
+            if($user->save()):
+                 return redirect()->route('change-password')->with(['alert'=>'success','message'=>'Your password has been changed successfully.']);
+            else:
+                 return redirect()->route('change-password')->with(['danger'=>'success','message'=>'Something went wrong.']);
+            endif;
+        } 
+        else 
+        {
+          return redirect()->route('change-password')->with(['alert'=>'danger','message'=>'Old Password is wrong']); 
+        }
+    }
+    public function loyalty(){
+      $id = Auth::id();
+      $booking =  BookingCount::where('user_id', $id)->first(['booking_count']);
+      if($booking)
+      {
+        $booking_count = $booking['booking_count'];
+      }
+      else
+      {
+        $booking_count = 0;
+      }
+      return view('webapp.loyalty',compact('booking_count')); 
+    }
+    public function upcoming_bookings(){
+      $id = Auth::id();
+      try 
+        {
+            $bookings = Order::with('deal:id,name')->where('user_id',$id)->where('status', '<=', '1')->orderBy('booking_datetime','asc')->get();
+            if(count($bookings)>0):
+                $message = 1; 
+            else:
+                $message = 'No upcoming jobs found.'; 
+            endif;
+        }
+        catch (Exception $e)
+        {       
+              $message = $e->getMessage(); 
+        } 
+        return view('webapp.upbookings',compact('bookings','message')); 
+    }
+    public function completed_bookings(){
+      $id = Auth::id();
+      try 
+        {
+            $bookings = Order::with('deal:id,name')->where('user_id', $id)->where('status','2')->orderBy('booking_datetime','asc')->get();
+            if(count($bookings)>0):
+                $message = 1; 
+            else:
+                $message = 'No completed jobs found.'; 
+            endif;
+        }
+        catch (Exception $e)
+        {       
+              $message = $e->getMessage(); 
+        } 
+        return view('webapp.combookings',compact('bookings','message')); 
+    }
+    public function booking_detail($booking_id)
+    {
+        try 
+            {
+                $booking = Order::with('deal:id,name','cartype:id,name','apply_promo:id,promo_id,user_id,total,grand_total,discount_price')->find($booking_id,['cartype_id','deal_id','payment_recipt','licence_plate','make','model','year','date','time','order_no','apply_promo_id','vat','service_fee','total','apply_promo_id']);
 
+                if(!is_null($booking)):
+                    if(!is_null($booking['apply_promo']))
+                    {
+                       $booking['promo_details'] = Promo::find($booking['apply_promo']['promo_id']);
+                    }
+
+                    $job_done_image = Jobimages::where('order_id', $booking_id)->get(['type','image']);
+                    if(!is_null($job_done_image)):
+                          $total = count($job_done_image);
+                          for ($i=0; $i < $total; $i++){ 
+                            $job_done_image[$i]['image'] = URL::to('/').'/'.$job_done_image[$i]['image'];
+                          }
+                          $booking['booking_images'] = $job_done_image;
+                     endif;
+
+                    //return response()->json(['status'=>true,'message'=>'Booking full Details.','payload'=>$booking]);
+                     $message = 1; 
+                else:
+                    //return response()->json(['status'=>false,'message'=>'Booking not found.']);
+                  $message = 'Booking not found.'; 
+                endif;
+            }
+            catch (Exception $e)
+            {
+              //return response()->json(['status' => false,'message' => $e->getMessage()]);
+              $message = $e->getMessage();
+            }
+            //dd($booking);
+            return view('webapp.bookingdetail',compact('booking','message'));  
+    }
+    
     public function contact_form(Request $request)
     {
         $rules = ['name'=>'required','email'=>'required','comment'=>'required'];
@@ -157,7 +279,7 @@ class MainworkController extends Controller
         
     }
     public function getlicense(Request $request)
-    {
+    { //hEDw3kw9AeKdUwFn
         $url = 'https://dvlasearch.appspot.com/DvlaSearch?apikey=hEDw3kw9AeKdUwFn&licencePlate='.$request->value;
         return $json = json_decode(file_get_contents($url), true);
 
@@ -312,10 +434,15 @@ class MainworkController extends Controller
               $value_car = json_decode($request->value_car, true);  
               $user_car_data = new UserCarData;
               $user_car_data->user_id = $info->user_id;
-              $user_car_data->licence_plate = $request->licence_plate;
+              /*$user_car_data->licence_plate = $request->licence_plate;
               $user_car_data->make = $value_car['make'];
               $user_car_data->model = $value_car['model'];
-              $user_car_data->year = $value_car['yearOfManufacture'];
+              $user_car_data->year = $value_car['yearOfManufacture'];*/
+              $user_car_data->licence_plate = $user->id;
+              $user_car_data->make = "sss";
+              $user_car_data->model = "volks";
+              $user_car_data->year = 2009;
+              
               $user_car_data->cartype = $request->cartype;
               $user_car_data->mode = '1';
               $user_car_data->save();
@@ -366,16 +493,19 @@ class MainworkController extends Controller
          if(isset($request->apply_promo) && !empty($request->apply_promo)){
            $check_promo = Promo::where('promo_code',$request->apply_promo)->first();
            if($check_promo){
+            $data['promo_id'] = $check_promo->promo_id;
             $data['promo_name'] = $check_promo->promo_code;
             $data['promo_discount'] = $check_promo->discount;
             $data['promo_status'] = 1;
             session()->put('promo_id', $check_promo->id);
             }else{
+            $data['promo_id'] = null;  
             $data['promo_name'] = null;
             $data['promo_discount'] = null;
             $data['promo_status'] = 0;
             } 
          }else{
+           $data['promo_id'] = null;  
            $data['promo_name'] = null;
            $data['promo_status'] = 1;
          }
@@ -437,6 +567,12 @@ class MainworkController extends Controller
         $id = Auth::id();
         $get_address = UserInformation::where('user_id',$id)->first();
         $get_cardata = UserCarData::where('user_id',$id)->where('mode','1')->first();
+
+        Stripe::setApiKey(config('stripe.stripe_secret'));
+         $user = \App\User::whereHas('roles',function($q){ $q->where('role_name','user'); })->find($id);
+        if(!is_null($user)):
+                $cards = Customer::allSources($user->stripe_customer);
+        endif;
         return view('webapp.payment',compact('get_address','get_cardata','data'));
       }else {
           // sorry, you're out of time
@@ -449,7 +585,8 @@ class MainworkController extends Controller
     }
 
     public function faq(){
-        return view('webapp.faq');
+        $faqs = Faq::orderBy('id','asc')->get();
+        return view('webapp.faq',compact('faqs'));
     }
 
     public function account(Request $request){
@@ -537,14 +674,24 @@ class MainworkController extends Controller
         $car = UserCarData::find($request->del_car);
             if($car):
                  $car->delete(); 
-                return redirect()->route('my-account')->with(['alert'=>'success','message'=>'Car removed successfully']);
+                return redirect()->route('home')->with(['alert'=>'success','message'=>'Car removed successfully']);
             else:
-                return redirect()->route('my-account')->with(['alert'=>'danger','message'=>'Something went wrong.']);
+                return redirect()->route('home')->with(['alert'=>'danger','message'=>'Something went wrong.']);
             endif;
     }
     public function book(){
+        $id = Auth::id();
+        $booking_count =  BookingCount::where('user_id', $id)->first(['booking_count']);
+        if($booking_count)
+        {
+          $user_booking_count = $booking_count['booking_count'];
+        }
+        else
+        {
+          $user_booking_count = 0;
+        }
         $deals = Deal::orderBy('id','asc')->get();
-        return view('webapp.book',compact('deals'));
+        return view('webapp.book',compact('deals','user_booking_count'));
     }
     public function add_car(){
         $cartypes = Cartype::orderBy('id','asc')->get();
@@ -576,12 +723,30 @@ class MainworkController extends Controller
         }
     }
     public function change_car(){
-        $cartypes = Cartype::orderBy('id','asc')->get();
-        return view('webapp.changecar',compact('cartypes'));
+        //$cartypes = Cartype::orderBy('id','asc')->get();
+        $id = Auth::id();
+        $all_cars = UserCarData::where('user_id', $id)->get();
+        return view('webapp.changecar',compact('all_cars'));
     }
+    public function change_newcar(Request $request)
+    {
+      //dd($request->all());
+      $id = Auth::id();
+      $update = UserCarData::where('user_id', $id)->update(['mode'=> '0']);
+      $set_default = UserCarData::where([['user_id', '=', $id],['id', '=', $request->id]])
+            ->update(['mode'=> '1']);
+       if($set_default):
+            return redirect()->route('change-car')->with(['alert'=>'success','message'=>'Customer default car updated']);
+       else:
+           return redirect()->route('change-car')->with(['alert'=>'danger','message'=>'Something went wrong.']);
+       endif;     
+    }
+    
 
     public function addpayment_method_data(Request $request)
     {
+
+      //dd($request->all());
 
         $rules = [
             'cartype_id'=>'required',
@@ -600,15 +765,312 @@ class MainworkController extends Controller
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) 
         {
-            return redirect()->route('confirm-booking')->with(['alert'=>'danger','message'=>$validator->errors()->first()]);
+            return response()->json(['status' => false,'message' => $validator->errors()->first()]);
         }
         else
         {
-          dd($request->all());
+            $stripe = Stripe::setApiKey(config('stripe.stripe_secret'));
+            $user = User::whereHas('roles',function($q){ $q->where('role_name','user'); })->find($request->user()->id);
+            if(!is_null($user))
+            {
+                $booking_datetime = date('Y-m-d H:i:s', strtotime("$request->date $request->time"));
+                if($request->booking_type == 0 || $request->booking_type == 2)
+                {
+                    $rules = ['stripe_id' => 'required'];
+                    $validator = Validator::make($request->all(), $rules);
+                    if ($validator->fails()) 
+                    {
+                        return response()->json(['status' => false,'message' => $validator->errors()->first()]);
+                    }
+                    
+                    $results = Shop::first();
+                    try
+                    { 
+                        $user_stripe_customer = $user->stripe_customer;
+                        if(empty($user_stripe_customer)){
+                         $customer = Customer::create(array(
+                            "name" =>$user->name,
+                            "email" => $user->email,
+                            "phone" => $user->mobile,
+                            "address" => ["city" => $user->user_information->city, "country" => "GB", "line1" =>  $user->user_information->address, "postal_code" => $user->user_information->postcode],
+                            "source" => $request->stripe_id,
+                            'description' => $user->name,
+                        )); 
+                        $user_stripe_customer = $customer->id;
+                        User::where('id',$user->id)->update(['stripe_customer'=> $user_stripe_customer]);  
+                     }else{
+                        $user_stripe_customer = $user->stripe_customer;     
+                     }
+                          
+                          $create_card = Customer::createSource($user_stripe_customer,['source' => $request->stripe_id]);
+                          $customer = Customer::retrieve($user_stripe_customer);
+                          $customer->default_source = $create_card->id;
+                          $customer->save();
+                        
+                    }
+                    catch(\Stripe\Exception\CardException $e)
+                    {
+                     $payload = array("status"=>$e->getHttpStatus(),"type"=>$e->getError()->type,"code"=>$e->getError()->code,"param"=>$e->getError()->param,"message"=>$e->getError()->message);
+                      return response()->json(['status'=>false,"payload"=>$payload,"message"=>$e->getError()->message]);
+                    } 
+                    catch (\Stripe\Exception\RateLimitException $e)
+                    {
+                      return response()->json(['status'=>false,'message'=>$e->getMessage()]);
+                    }catch (\Stripe\Exception\InvalidRequestException $e)
+                    {
+                      return response()->json(['status'=>false,'message'=>$e->getMessage()]);
+                    } catch (\Stripe\Exception\AuthenticationException $e)
+                    {
+                      return response()->json(['status'=>false,'message'=>$e->getMessage()]);
+                    } catch (\Stripe\Exception\ApiConnectionException $e)
+                    {
+                      return response()->json(['status'=>false,'message'=>$e->getMessage()]);
+                    } catch (\Stripe\Exception\ApiErrorException $e)
+                    {
+                      return response()->json(['status'=>false,'message'=>$e->getMessage()]);
+                    }
+                    catch (Exception $e)
+                    {
+                      return response()->json(['status'=>false,'message'=>$e->getMessage()]);
+                    }   
+                    try
+                    {
+                        if(!empty($request->promo_id) && isset($request->promo_id)):
+                            $amount = $request->grand_total;
+                        else:
+                            $amount = $request->total;
+                        endif;
+                        $amount = number_format($amount);
+                        $charge = Charge::create(array(
+                            'customer' => $user_stripe_customer,
+                            'amount'   =>  $amount * 100,
+                            'currency' => $results->currency,
+                            'description' => "Booking for Splash N Drip",
+                            'receipt_email'=> $user->email
+                        ));
+
+                        $status = $charge['status'];
+                        if($status == "succeeded")
+                        {  
+                            if($request->booking_type == 0)
+                            {
+                                if(!empty($request->promo_id) && isset($request->promo_id)):
+                                    $apply_promo = new ApplyPromo;
+                                    $apply_promo->user_id = $user->id;
+                                    $apply_promo->promo_id = $request->promo_id;
+                                    $apply_promo->total = $request->total;
+                                    $apply_promo->discount_price = $request->discount_price;
+                                    $apply_promo->grand_total = $request->grand_total;
+                                    $apply_promo->save();
+                                endif;
+                            }
+                            $latestOrder = new Order;
+                            $latestOrder->user_id = $request->user()->id;
+                            $latestOrder->stripe_id = $request->stripe_id;
+                            $latestOrder->cartype_id = $request->cartype_id;
+                            $latestOrder->deal_id = $request->deal_id;
+                            $latestOrder->date = $request->date;
+                            $latestOrder->time = $request->time;
+                            /*$latestOrder->vat = $request->vat;*/
+                            $latestOrder->service_fee = $request->service_fee;
+                            $latestOrder->total = $amount;
+                            $latestOrder->licence_plate = $request->licence_plate;
+                            $latestOrder->make = $request->make;
+                            $latestOrder->model = $request->model;
+                            $latestOrder->year = $request->year;
+                            $latestOrder->booking_datetime = $booking_datetime;
+                            $latestOrder->payment_recipt = $charge['receipt_url'];
+                            $latestOrder->booking_type = $request->booking_type;
+                            if($latestOrder->save()):
+
+                                $user_charge = new UserChargeDetails;
+                                $user_charge->user_id = $user->id;
+                                $user_charge->charge_id = $charge->id;
+                                $user_charge->booking_id = $latestOrder->id;
+                                $user_charge->save();
+
+                                $order = Order::find($latestOrder->id);
+                                if($request->booking_type == 0)
+                                {
+                                    if(isset($apply_promo) && !is_null($apply_promo)):
+                                      $order->apply_promo_id = $apply_promo->id;
+                                    endif;
+                                }
+                                if($request->booking_type == 2)
+                                {
+                                    BookingCount::where('user_id', $order->user_id)->delete();
+                                }
+                                $order->order_no = '#'.str_pad($latestOrder->id + 1, 3, "0", STR_PAD_LEFT);
+                                if($order->save()):
+                                    //$this->admin_employee_tokens($order->id,$order->order_no);
+
+                                    $booking_data['date'] = $request->date;
+                                    $booking_data['time'] = $request->time;
+                                    $booking_data['name'] = $user->name;
+                                    $booking_data['address'] = $user->user_information->city.' '.$user->user_information->address.' '.$user->user_information->postcode;
+                                    $booking_data['email'] = $user->email;
+                                    $booking_data['mobile'] = $user->mobile;
+                                    $deal = Deal::find($request->deal_id);
+                                    if(!is_null($deal)){
+                                    $booking_data['wash_type'] = $deal->name;
+                                    }
+
+                                    Mail::to('sameer.ece564@gmail.com')->send(new BookingMail($booking_data));
+
+                                    return redirect()->route('booking-success')->with(['alert'=>'success','message'=>'booking added successfully.','payload'=>$order->order_no]);
+
+                                    return response()->json(['status'=>true,'message'=>'booking added successfully.','payload'=>$order->order_no]);
+                                else:
+                                    return response()->json(['status'=>false,'message'=>'Something went wrong.']);
+                                endif;
+                            else:
+                                return response()->json(['status'=>false,'message'=>'Something went wrong.']);
+                            endif;
+                        }
+                        elseif ($status == "pending")
+                        {
+                            return response()->json(['status'=>false,'message'=>'Sorry, the payment cannot be completed now. Please try again later.']);
+                        }
+                        else
+                        {
+                            return response()->json(['status'=>false,'message'=>'Sorry, the payment cannot be completed now. Please try again later.']);
+                        }
+                    } 
+                    catch(\Stripe\Exception\CardException $e)
+                    {
+                      $payload = array("status"=>$e->getHttpStatus(),"type"=>$e->getError()->type,"code"=>$e->getError()->code,"param"=>$e->getError()->param,"message"=>$e->getError()->message);
+                      return response()->json(['status'=>false,"payload"=>$payload,"message"=>$e->getError()->message]);
+                    } catch (\Stripe\Exception\RateLimitException $e)
+                    {
+                      return response()->json(['status'=>false,'message'=>$e->getMessage()]);
+                    } catch (\Stripe\Exception\InvalidRequestException $e)
+                    {
+                      return response()->json(['status'=>false,'message'=>$e->getMessage()]);
+                    } catch (\Stripe\Exception\AuthenticationException $e)
+                    {
+                      return response()->json(['status'=>false,'message'=>$e->getMessage()]);
+                    } catch (\Stripe\Exception\ApiConnectionException $e)
+                    {
+                      return response()->json(['status'=>false,'message'=>$e->getMessage()]);
+                    } catch (\Stripe\Exception\ApiErrorException $e)
+                    {
+                      return response()->json(['status'=>false,'message'=>$e->getMessage()]);
+                    }
+                    catch (Exception $e)
+                    {
+                      return response()->json(['status'=>false,'message'=>$e->getMessage()]);
+                    }  
+                }
+                elseif ($request->booking_type == 1)
+                {
+                    $latestOrder = new Order;
+                    $latestOrder->user_id = $request->user()->id;
+                    $latestOrder->stripe_id = "FREE";
+                    $latestOrder->cartype_id = $request->cartype_id;
+                    $latestOrder->deal_id = $request->deal_id;
+                    $latestOrder->date = $request->date;
+                    $latestOrder->time = $request->time;
+                    $latestOrder->vat = $request->vat;
+                    $latestOrder->service_fee = $request->service_fee;
+                    $latestOrder->total = $request->total;
+                    $latestOrder->licence_plate = $request->licence_plate;
+                    $latestOrder->make = $request->make;
+                    $latestOrder->model = $request->model;
+                    $latestOrder->year = $request->year;
+                    $latestOrder->booking_datetime = $booking_datetime;
+                    $latestOrder->payment_recipt = "FREE";
+                    $latestOrder->booking_type = $request->booking_type;
+                    if($latestOrder->save()):
+                        $order = Order::find($latestOrder->id);
+                        BookingCount::where('user_id', $order->user_id)->delete();
+                        $order->order_no = '#'.str_pad($latestOrder->id + 1, 3, "0", STR_PAD_LEFT);
+                        if($order->save()):
+                            //$this->admin_employee_tokens($order->id,$order->order_no);
+                            
+                            $booking_data['date'] = $request->date;
+                            $booking_data['time'] = $request->time;
+                            $booking_data['name'] = $user->name;
+                            $booking_data['address'] = $user->user_information->city.' '.$user->user_information->address.' '.$user->user_information->postcode;
+                            $booking_data['email'] = $user->email;
+                            $booking_data['mobile'] = $user->mobile;
+
+                            $deal = Deal::find($request->deal_id);
+
+                            if(!is_null($deal)){
+                            $booking_data['wash_type'] = $deal->name;
+                            }
+
+                            Mail::to('sameer.ece564@gmail.com')->send(new BookingMail($booking_data));
+                            return response()->json(['status'=>true,'message'=>'Booking added successfully.','payload'=>$order->order_no]);
+                        else:
+                            return response()->json(['status'=>false,'message'=>'Something went wrong.']);
+                        endif;
+                    else:
+                        return response()->json(['status'=>false,'message'=>'Something went wrong.']);
+                    endif;
+                }
+            }
+            else
+            {
+                return response()->json(['status'=>false,'message'=>'User not found.']);
+            }
         }
 
       
     }
+    public function admin_employee_tokens($order_id, $order_no)
+    {
+        $users_id = DB::table('role_user')->where('role_id','1')->orWhere('role_id','3')->pluck('user_id')->toArray();
+        $tokens = User::whereIn('id', $users_id)->get(['id','firebase_token']);
+        foreach ($tokens as $value)
+        {
+            if(!is_null($value->firebase_token))
+            {
+              $message = [ 
+                "to" => $value->firebase_token,
+                "priority" => 'high',
+                "sound" => 'default', 
+                "badge" => '1',
+                "notification" =>
+                    [
+                        "title" => "New Booking",
+                        "body" => "You have new booking to confirm",
+                    ],
+                "data" => 
+                        [ 
+                           "order_id" => $order_id,
+                           "order_no"=> $order_no
+                        ]
+                    ];
+               PushNotification::send($message);
+            }
+        }  
+    }
+
+    public function generate_token()
+    { 
+        //return config('stripe.stripe_key');
+        Stripe::setApiKey(config('stripe.stripe_secret'));
+        $connectionToken = \Stripe\Token::create(['card' => [
+            'number' => '4242424242424242',
+            'exp_month' => 06,
+            'exp_year' => 25,
+            'cvc' => '314',
+        ],]);
+        return $connectionToken;
+    }
+
+    public function booking_success()
+    { 
+         //return view('webapp.bookingsuccess',compact('value','messageji'));
+        $value = Session::get('alert');
+        $message = Session::get('message');
+        if($value == null){
+            return redirect()->route('upcoming-bookings');
+        }else{
+         return view('webapp.bookingsuccess',compact('value','message'));
+        }
+    }  
 
     
     

@@ -2,91 +2,79 @@
 
 @section('content')
 <main>
-<section class="Banner_Inner">
-         <div class="container-floud">
-            <div class="row  justify-c">
-               <div class="col-md-12 text-center">
-                  <h2>FAQ</h2>
-                 </div> 
+      <section class="selectcartype-section settingssection">
+        <div class="container-fluid p-0">
+          <div class="row no-gutters">
+            <div class="col-md-12">
+              <div class="bannerimgmain">
+                <div class="bannerimgmain-box"><img class="footerlogoimg w-100" src="{{ asset('final_myassets/images/settings.jpg') }}" alt="image"></div>
+                <div class="pagetitletopbanner"><h2 class="titletext">FAQ’s</h2></div>
+              </div>
             </div>
-         </div>
-      </section>    
-       <section class="section_cartype">
-<div class="col-sm-6 accordion_one">
-                            <div class="panel-group" id="accordionFourLeft">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                              <a data-toggle="collapse" data-parent="#accordion_oneLeft" href="#collapseFiveLeftone" aria-expanded="false" class="collapsed">
-                                Why Font Awesome used
-                              </a>
-                            </h4>
-                                    </div>
-                                    <div id="collapseFiveLeftone" class="panel-collapse collapse" aria-expanded="false" role="tablist" style="height: 0px;">
-                                        <div class="panel-body">
-                                            <div class="img-accordion">
-                                                <img src="https://img.icons8.com/color/81/000000/person-female.png" alt="">
-                                            </div>
-                                            <div class="text-accordion">
-                                                <p>
-                                                    Why Font Awesome usedWhy Font Awesome usedWhy Font Awesome usedWhy Font Awesome usedWhy Font Awesome usedWhy Font Awesome usedWhy Font Awesome usedWhy Font Awesome usedWhy Font Awesome usedWhy Font Awesome usedWhy Font Awesome usedWhy Font Awesome usedWhy Font Awesome used
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <!-- end of panel-body -->
-                                    </div>
-                                </div>
-                                <!-- /.panel-default -->
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                              <a class="collapsed" data-toggle="collapse" data-parent="#accordion_oneLeft" href="#collapseFiveLeftTwo" aria-expanded="false">
-                                Why Font Awesome used and  its benefits
-                              </a>
-                            </h4>
-                                    </div>
-                                    <div id="collapseFiveLeftTwo" class="panel-collapse collapse" aria-expanded="false" role="tablist" style="height: 0px;">
-                                        <div class="panel-body">
-                                            <div class="img-accordion">
-                                                <img src="https://img.icons8.com/color/81/000000/person-female.png" alt="">
-                                            </div>
-                                            <div class="text-accordion">
-                                                <p>
-                                                    Why Font Awesome usedWhy Font Awesome usedWhy Font Awesome usedWhy Font Awesome usedWhy Font Awesome usedWhy Font Awesome usedWhy Font Awesome usedWhy Font Awesome usedWhy Font Awesome used
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <!-- end of panel-body -->
-                                    </div>
-                                </div>
-                                <!-- /.panel-default -->
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                              <a class="collapsed" data-toggle="collapse" data-parent="#accordion_oneLeft" href="#collapseFiveLeftThree" aria-expanded="false">
-                                Why Font Awesome used for its own 
-                              </a>
-                            </h4>
-                                    </div>
-                                    <div id="collapseFiveLeftThree" class="panel-collapse collapse" aria-expanded="false" role="tablist">
-                                        <div class="panel-body">
-                                            <div class="img-accordion">
-                                                <img src="https://img.icons8.com/color/81/000000/person-female.png" alt="">
-                                            </div>
-                                            <div class="text-accordion">
-                                                <p>
-                                                     Why Font Awesome used for its own Why Font Awesome used for its own Why Font Awesome used for its own Why Font Awesome used for its own Why Font Awesome used for its own Why Font Awesome used for its own Why Font Awesome used for its own
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <!-- end of panel-body -->
-                                    </div>
-                                </div>
-                                <!-- /.panel-default -->
-                            </div>
-                            <!--end of /.panel-group-->
-                        </div>
-</section>
-</main>
+          </div>
+        </div>
+      </section>
+      <section class="cartypecontainer-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 mt-4">
+              <h3 class="cardeltitle"><b>Settings</b></h3>
+            </div>
+            <div class="col-md-12 mt-4">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="tabcustom">
+                <a href="{{route('home')}}"><button class="tablinks" >My Account</button></a>
+                <a href="{{route('faq')}}"><button class="tablinks active">FAQ’s</button></a>
+                <a href="{{route('contact')}}"><button class="tablinks">Contact Us</button></a>
+                <a href="{{route('home')}}"><button class="tablinks">Change Password</button></a>
+                @auth
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                <button>Logout</button>
+                </a>
+                @endauth
+<form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+    {{ csrf_field() }}
+</form>
+                </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="tabcontaninner">
 
+                    <div id="tabtwo" class="tabcustomcontent">
+                     <div class="row ">
+                        <div class="col-md-12 faqcol">
+                           <h3 class="cardeltitle mb-2"><b>FAQ’s</b></h3>
+                           <div id="accordion" class="accordion customeaccordion">
+                            <div class="card customecard">
+                              @foreach($faqs as $faq)
+                                <div class="card-header collapsed" data-toggle="collapse" href="#collapse_{{$faq->id}}">
+                                    <a class="card-title">
+                                      {{$faq->question}}
+                                    </a>
+                                </div>
+                                <div id="collapse_{{$faq->id}}" class="card-body collapse" data-parent="#accordion" >
+                                    <p>{{$faq->answer}}
+                                    </p>
+                                </div>
+
+                              @endforeach  
+                               
+                                
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                     </div>
+                    
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </section>
+    </main>
 @endsection

@@ -1,6 +1,6 @@
 'use strict';
 
-var stripe = Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+var stripe = Stripe('pk_test_51JZKEDDAdmpjvPfpcjfG74ST7SX6H3Sc6bRJIr5JxiVZVZPwSWmjUVBV53jp7c0RwIW7F76N8qVW8EjKM9wrhQ2k00n93HNBan');
 
 function registerElements(elements, exampleName) {
   var formClass = '.' + exampleName;
@@ -122,11 +122,8 @@ function registerElements(elements, exampleName) {
 
       if (result.token) {
         // If we received a token, show the token ID.
-        example.querySelector('.token').value = result.token.id;
-        var formsub = document.getElementById("publishform");
-        formsub.submit();
-        $('#loader').show();
-        /*example.classList.add('submitted');*/
+        example.querySelector('.token').innerText = result.token.id;
+        example.classList.add('submitted');
       } else {
         // Otherwise, un-disable inputs.
         enableInputs();
