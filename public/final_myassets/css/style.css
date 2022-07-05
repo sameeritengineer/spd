@@ -1240,3 +1240,74 @@ a.ui-state-default.ui-state-active, .ui-button.ui-state-active:hover {
   color: #1248b0;
   font-weight: bold;
 }
+.example.example1 {
+  background-color: #ffffff!important;
+}
+.example.example1 button {
+  border-bottom: 7px solid #002D84!important;
+  background-color: #1248B0!important;
+  width: 93%!important;
+  padding: 4px!important;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: all ease-in-out 0.5s;
+  color: #fff;
+  height: 64px!important;
+}
+section.cartypecontainer-section .success {
+  display: none;
+}
+section.cartypecontainer-section .error {
+  display: none;
+}
+div#example1-card {
+  padding: 21px 13px!important;
+}
+section.cartypecontainer-section iframe {
+  height: 25px!important;
+}
+.bg-light {
+  background-color: #ffffff!important;
+}
+.ElementsApp .InputElement.is-invalid {
+  color: #1248b0!important;
+}
+.ElementsApp, .ElementsApp .InputElement {
+  color: #000!important;
+}
+.ElementsApp .InputElement.is-invalid {
+  color: #000000;
+}
+section.cartypecontainer-section .serimg {
+  min-height: 147px;
+  border-radius: 20px;
+  max-height: 147px;
+}
+.row.perstlrow.no-gutters.secmain .ElementsApp,.row.perstlrow.no-gutters.secmain .ElementsApp .InputElement {
+  color: #000!important;
+}
+.daystatusbox .col-md-8.text-left.service-right h4 s {
+  font-size: 16px;
+  color: #282828;
+}
+.car_option a button {
+  font-size: 15px !important;
+  padding: 10px 35px!important;
+  margin-left: 14px!important;
+}
+.example.example1 fieldset {
+  margin: 0 15px 20px;
+  padding: 0;
+  border-style: none;
+  background-color: #000000!important;
+  box-shadow: 0 6px 9px rgb(50 50 93 / 6%), 0 2px 5px rgb(0 0 0 / 8%), inset 0 3px 0 #829fff!important;
+  border-radius: 4px;
+}
+p.fw-bold {
+  font-size: 18px;
+  font-weight: 700;
+  padding-bottom: 0px!important;
+}
+.ElementsApp .InputElement.is-invalid {
+  color: #1248b0!important;
+}
