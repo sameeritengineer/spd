@@ -49,7 +49,7 @@ a.nav-link.active, a.nav-link:hover {
   color: rgb(11 56 144)!important;
 }
 img.headerlogo {
-  width: 104px;
+  width: 185px;
 }
 section.footer {
   background: #000;
@@ -60,7 +60,7 @@ section.footer {
   color: #fff;
 }
 .footerlogo img {
-  width: 110px;
+  width: 250px;
   margin-bottom: 77px;
 }
 .col-md-4.footercol ul li a {
@@ -398,8 +398,8 @@ ul.servicelisting li {
 }
 a.serviceincbtn:hover {
   background: #002D84;
-  color: #fff;
-  text-decoration: none;
+  color: #fff !important;
+  text-decoration: none !important;
 }
 
 .form-control-custom {
@@ -925,7 +925,7 @@ img.ser-icon-img {
 }
 .contact_us {
   background-color: #ffffff;
-  padding: 50px 0px 10px;
+  padding: 50px 0px 50px;
 }
 .contact_inner{
  background-color: #fff;

@@ -64,7 +64,7 @@
             </div>
         </div>
     </section>
-      <section class="map_sec">
+<!--       <section class="map_sec">
         <div class="container-fluid p-0">
             <div class="row no-gutters">
                 <div class="col-md-12">
@@ -78,7 +78,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     </main>
 <!-- <section class="page-title bg-1">
          <div class="overlay"></div>

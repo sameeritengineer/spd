@@ -17,7 +17,7 @@
       </section>
       <section class="ownimg-section">
         <div class="container">
-           <div class="row no-gutters">
+           <!-- <div class="row no-gutters">
             <div class="col-md-4">
               <div class="ownimg-img-left"><img class="ownimg" src="{{ asset('final_myassets/images/ownimg.png') }}"></div> 
               <div class="ceobox">
@@ -25,11 +25,10 @@
                 <p>FOUNDER & CEO</p>
               </div>
               
-           </div>
-              <div class="col-md-8 abgitouttop-right">
-                 <h2 class="abouttop-sec-title">Who We Are?</h2>
-                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-                 <p>Lorem Ipsum is simply dummy text of the printing .</p>
+           </div> -->
+              <div class="col-md-12 abgitouttop-right">
+                 <h2 class="abouttop-sec-title" style="text-align: center">Who We Are?</h2>
+                 <p style="text-align: center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
                 </div>
               
            </div>
@@ -70,57 +69,5 @@
        </div>
     </div>
  </section>
-     <section class="testmonial-sec">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-12">
-               <h2 class="main-home-sec-title">What our clients say</h2>
-            </div>
-            <div class="col-md-12">
-               <div id="testmonial-slider" class="app-showcase-main owl-carousel ourworkslider">
-                  <div class="testmonial-slider-itm">
-                     <div class="testmonial-slider-itm-inner">
-                        <h2>Incredible Experience</h2>
-                        <p>We had an incredible experience working with Landify and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.</p>
-                        <div class="media">
-                           <div class="testmonial-slider-itm-img mr-3"><img class="ser-icon-img" src="{{ asset('final_myassets/images/userimg.png') }}"></div>
-                           <div class="media-body">
-                             <h5 class="mt-0">Esther Howard</h5>
-                             <p>12/10/13</p>
-                           </div>
-                         </div>
-                     </div>
-                  </div>
-                  <div class="testmonial-slider-itm">
-                     <div class="testmonial-slider-itm-inner">
-                        <h2>Incredible Experience</h2>
-                        <p>We had an incredible experience working with Landify and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.</p>
-                        <div class="media">
-                           <div class="testmonial-slider-itm-img mr-3"><img class="ser-icon-img" src="{{ asset('final_myassets/images/userimg.png') }}"></div>
-                           <div class="media-body">
-                             <h5 class="mt-0">Esther Howard</h5>
-                             <p>12/10/13</p>
-                           </div>
-                         </div>
-                     </div>
-                  </div>
-                  <div class="testmonial-slider-itm">
-                     <div class="testmonial-slider-itm-inner">
-                        <h2>Incredible Experience</h2>
-                        <p>We had an incredible experience working with Landify and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.</p>
-                        <div class="media">
-                           <div class="testmonial-slider-itm-img mr-3"><img class="ser-icon-img" src="{{ asset('final_myassets/images/userimg.png') }}"></div>
-                           <div class="media-body">
-                             <h5 class="mt-0">Esther Howard</h5>
-                             <p>12/10/13</p>
-                           </div>
-                         </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-               </div>
-            </div>
-   </section>
     </main>
 @endsection

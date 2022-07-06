@@ -163,7 +163,7 @@
             </div>
          </div>
       </section>
-      <section class="nature-section">
+      <!-- <section class="nature-section">
          <div class="container">
             <div class="row">
                <div class="col-md-4">
@@ -189,7 +189,7 @@
                 </div>
             </div>
          </div>
-      </section>
+      </section> -->
       <section class="testmonial-sec">
          <div class="container">
             <div class="row">
@@ -242,7 +242,7 @@
                   </div>
                </div>
       </section>
-      <section class="contactus-section">
+      <!-- <section class="contactus-section">
          <div class="container-fluid p-0">
             <div class="row no-gutters justify-content-center">
                <div class="col-md-6 ">
@@ -294,6 +294,6 @@
                
             </div>
          </div>
-      </section>
+      </section> -->
    </main>
 @endsection
