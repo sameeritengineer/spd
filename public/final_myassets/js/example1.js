@@ -15,6 +15,7 @@
 
   var card = elements.create('card', {
     iconStyle: 'solid',
+    hidePostalCode: true,
     style: {
       base: {
         iconColor: '#c4f0ff',

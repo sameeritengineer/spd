@@ -16,16 +16,6 @@
       </section>
             <section class="cartypecontainer-section">
          <div class="container">
-          <div class="row mt-3 mb-3">
-               <div class="col-md-12">
-                <a class="serviceincbtn pnone bk_deals" href="#"><span>Back</span></a>
-                <a class="serviceincbtn pnone bk_worktime" href="#"><span>Back</span></a>
-               </div>
-               <div class="car_option">
-                <a href="{{route('add-car')}}"><button type="button" class="btn btnownstyle mt-4 mx-w300">Add Car</button></a>
-                <a href="{{route('change-car')}}"><button type="button" class="btn btnownstyle mt-4 mx-w300">Change Car</button></a>
-              </div>
-            </div>
             <div class="stepthreecontainer">
                <div class="row daystatusbox servicesselect">
                 @foreach($deals as $deal) 
@@ -78,11 +68,11 @@
 $(document).on('click','.deal_id',function(){
    var id = $(this).val();
    localStorage.setItem("deal_id", id);
-   localStorage.setItem("in_step2",'completed');
-   window.location.href = "{{ route('book-date-time')}}";
+   localStorage.setItem("step2",'completed');
+   window.location.href = "{{ route('get-time')}}";
 
   });
-/*$(document).ready(function(){
+$(document).ready(function(){
    var step1 = localStorage.getItem("step1");
    if(step1 == 'completed'){
     var deal_id = localStorage.getItem("deal_id");
@@ -90,7 +80,7 @@ $(document).on('click','.deal_id',function(){
    }else{
     window.location.href = "{{ route('get-cartypes')}}";
    }
-});*/
+});
 </script>
 @endsection
 

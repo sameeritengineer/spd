@@ -3,7 +3,33 @@
 
 @section('content')
 <main>
-      <section class="home-banner">
+<section class="home-banner">
+   <ul class="socils-icons topbannersocialicons">
+            <li class=""><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
+            <li class=""><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li class=""><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+         </ul>
+        <div class="container-fluid p-0">
+          <div class="row no-gutters">
+            <div class="col-md-12">
+              <div class="bannerimgmain">
+                <div class="bannerimgmain-box"><img class="homesliderimage" src="{{ asset('final_myassets/images/sliderimg1.jpg') }}"></div>
+                <div class="slide-itm-inner">
+                  <h2 >Car Wash, Valet & Diamond Cut</h2>
+                  <p>Download our Mobile App now and book your car wash, alloy & detailing service</p>
+                   @auth
+                  <a class="emgcybtn" href="{{route('book')}}">Book Now</a>
+                  @else
+                  <a class="emgcybtn" href="{{route('getpostcode')}}">Book Now</a>
+                 @endauth
+                  
+               </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- <section class="home-banner">
          <ul class="socils-icons topbannersocialicons">
             <li class=""><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
             <li class=""><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
@@ -35,18 +61,21 @@
                </div>
             </div>
       </div>
-      </section>
+      </section> -->
       <section class="proficnal-section">
          <div class="container-fluid">
             <div class="row justify-content-center">
                <div class="col-md-6">
                   <div class="proficnal-sectionleft">
-                  <h2 class="main-home-sec-title">Professional Washing And Cleaning.</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus 
-                     mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+                  <h2 class="main-home-sec-title">Car Valenting</h2>
+                  <p>Forget waiting in a queue to get your car valeted or alloys done. Our punctual, reliable service offers all of that and more from the comfort of your own home or workplace.</p>
                    <div class="btnprficnl">
-                     <a class="btnstyle-home numbercolor" href="#">07985125953</a>
-                     <a class="btnstyle-home booknowcolor"  href="#">Book Now</a>
+                     <!-- <a class="btnstyle-home numbercolor" href="#">07985125953</a> -->
+                     @auth
+                  <a class="btnstyle-home booknowcolor" href="{{route('book')}}">Book Now</a>
+                  @else
+                  <a class="btnstyle-home booknowcolor" href="{{route('getpostcode')}}">Book Now</a>
+                 @endauth
                    </div>  
                </div>
             </div>
@@ -64,10 +93,10 @@
                </div>
                <div class="col-md-6">
                   <div class=" appdownload-right">
-                  <h2 class="main-home-sec-title">Professional Washing And Cleaning.</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur r</p>
+                  <h2 class="main-home-sec-title">Alloy Wheel Refurbishment</h2>
+                  <p>Mobile car valeting & detailing service now extending our services and doing mobile diamond cut and alloy wheel refurbishment, covering all of london and the surrounding areas.</p>
                    <div class="btnprficnl">
-                     <a class="" href="#"><img class="appdown-img" src="{{ asset('final_myassets/images/app-store.png') }}"></a>
+                     <a class="" href="#"><img class="appdown-img apple" src="{{ asset('final_myassets/images/app-store.png') }}"></a>
                      <a class="" href="#"><img class="appdown-img" src="{{ asset('final_myassets/images/google-play.png') }}"></a>
                    </div>  
                   </div>  
@@ -79,7 +108,7 @@
          <div class="container">
             <div class="row">
                <div class="col-md-12">
-                  <h2 class="main-home-sec-title p-0">Our Washing Services</h2>
+                  <h2 class="main-home-sec-title p-0">Our Services</h2>
                </div>
                <div class="col-md-12">
                   <div id="service-wash" class="app-showcase-main owl-carousel ourworkslider">
@@ -88,13 +117,13 @@
                         <div class="ourinner">
                            <h2>Rain Repellent</h2>
                            <p>Vestibulum tortor risus, rutrum at congue sed ultricies finibus.</p>
-                           <ul class="list-inline">
+                           <!-- <ul class="list-inline">
                               <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
                               <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
                               <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
                               <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
                               <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                           </ul>
+                           </ul> -->
                         </div>
                      </div>
                      <div class="slide-itm-ser-main">
@@ -102,13 +131,6 @@
                         <div class="ourinner">
                            <h2>Rain Repellent</h2>
                            <p>Vestibulum tortor risus, rutrum at congue sed ultricies finibus.</p>
-                           <ul class="list-inline">
-                              <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                              <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                              <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                              <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                              <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                           </ul>
                         </div>
                      </div>
                      <div class="slide-itm-ser-main">
@@ -116,13 +138,6 @@
                         <div class="ourinner">
                            <h2>Rain Repellent</h2>
                            <p>Vestibulum tortor risus, rutrum at congue sed ultricies finibus.</p>
-                           <ul class="list-inline">
-                              <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                              <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                              <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                              <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                              <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                           </ul>
                         </div>
                      </div>
                      <div class="slide-itm-ser-main">
@@ -130,13 +145,6 @@
                         <div class="ourinner">
                            <h2>Rain Repellent</h2>
                            <p>Vestibulum tortor risus, rutrum at congue sed ultricies finibus.</p>
-                           <ul class="list-inline">
-                              <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                              <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                              <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                              <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                              <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                           </ul>
                         </div>
                      </div>
                </div>
@@ -144,7 +152,7 @@
                   </div>
                </div>
       </section>
-      <section class="cleaning-section">
+      <!-- <section class="cleaning-section">
          <div class="container-fluid p-0">
             <div class="row no-gutters">
                <div class="col-md-6">
@@ -162,7 +170,7 @@
                </div>
             </div>
          </div>
-      </section>
+      </section> -->
       <!-- <section class="nature-section">
          <div class="container">
             <div class="row">

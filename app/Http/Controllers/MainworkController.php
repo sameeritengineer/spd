@@ -51,6 +51,16 @@ class MainworkController extends Controller
         return view('aboutus');
 
     }
+    public function carwash()
+    {
+        return view('carwash');
+
+    }
+    public function alloy_wheel()
+    {
+        return view('alloy');
+
+    }
     public function services()
     {
         $cartypes = Cartype::orderBy('id','asc')->get();
@@ -252,7 +262,7 @@ class MainworkController extends Controller
             if($results->distance <= 18){
                 session(['success_postcode' => $request->postcode]);
                 //return response()->json(['status'=>true,'data'=>$post_Data,'message'=>"Thanks for using Corner Shop App."]);
-                return redirect()->route('cartypes')->with(['alert'=>'success','message'=>'Thanks.']);
+                return redirect()->route('get-cartypes')->with(['alert'=>'success','message'=>'Thanks.']);
             }
             else
             {
@@ -388,7 +398,7 @@ class MainworkController extends Controller
         session()->put('session_time', time());
         session()->put('dealtype', $request->dealtype);
         session()->put('book_date', $request->book_date);
-        session()->put('book_time', $request->selector);
+        session()->put('book_time', $request->book_time);
         $rules = [
             'name'=>'required',
             'email'=>'required|string|email|max:255|unique:users',
@@ -397,8 +407,8 @@ class MainworkController extends Controller
             'address'=> 'required',
             'postcode'=>'required',
             'city'=>'required',
-            /*'licence_plate'=>'required|unique:user_car_data',
-            'make'=>'required',
+            'licence_plate'=>'required|unique:user_car_data',
+            /*'make'=>'required',
             'model'=>'required',
             'year'=>'required',
             'cartype'=>'required'*/
@@ -434,14 +444,14 @@ class MainworkController extends Controller
               $value_car = json_decode($request->value_car, true);  
               $user_car_data = new UserCarData;
               $user_car_data->user_id = $info->user_id;
-              /*$user_car_data->licence_plate = $request->licence_plate;
+              $user_car_data->licence_plate = $request->licence_plate;
               $user_car_data->make = $value_car['make'];
               $user_car_data->model = $value_car['model'];
-              $user_car_data->year = $value_car['yearOfManufacture'];*/
-              $user_car_data->licence_plate = $user->id;
+              $user_car_data->year = $value_car['yearOfManufacture'];
+              /*$user_car_data->licence_plate = $user->id;
               $user_car_data->make = "sss";
               $user_car_data->model = "volks";
-              $user_car_data->year = 2009;
+              $user_car_data->year = 2009;*/
               
               $user_car_data->cartype = $request->cartype;
               $user_car_data->mode = '1';
@@ -476,7 +486,7 @@ class MainworkController extends Controller
 
     public function summary(Request $request){
         $time = Session::get('session_time');
-        if (time() - $time < 300) { // 300 seconds = 5 minutes
+        if (time() - $time < 1500) { // 300 seconds = 5 minutes
     // they're within the 5 minutes so save the details to the database
          $data = [];
          $dealtype = Session::get('dealtype');
@@ -508,6 +518,7 @@ class MainworkController extends Controller
            $data['promo_id'] = null;  
            $data['promo_name'] = null;
            $data['promo_status'] = 1;
+           Session::forget('promo_id');
          }
 
 
@@ -528,7 +539,7 @@ class MainworkController extends Controller
     }
     public function confirm_booking(){
       $time = Session::get('session_time');
-        if (time() - $time < 300) { // 300 seconds = 5 minutes
+        if (time() - $time < 1500) { // 300 seconds = 5 minutes
     // they're within the 5 minutes so save the details to the database
          $data = [];
          $dealtype = Session::get('dealtype');
@@ -692,6 +703,9 @@ class MainworkController extends Controller
         }
         $deals = Deal::orderBy('id','asc')->get();
         return view('webapp.book',compact('deals','user_booking_count'));
+    }
+    public function book_date_time(){
+         return view('webapp.bookdatetime');
     }
     public function add_car(){
         $cartypes = Cartype::orderBy('id','asc')->get();
@@ -1070,6 +1084,58 @@ class MainworkController extends Controller
         }else{
          return view('webapp.bookingsuccess',compact('value','message'));
         }
+    }
+
+    public function get_cartypes_new()
+    {
+        $postcode = Session::get('success_postcode');
+        if(is_null($postcode)){
+          return redirect()->route('getpostcode')->with(['alert'=>'danger','message'=>'Please Enter Postcode First']);
+        }elseif(Auth::check()){
+         return redirect()->route('book');
+        }else{
+            $cartypes = Cartype::orderBy('id','asc')->get();
+            $deals = Deal::orderBy('id','asc')->get();
+            return view('webapp.steps.step1',compact('cartypes','deals','postcode'));
+        }
+        
+    }
+    public function get_deals_new()
+    {
+        $postcode = Session::get('success_postcode');
+        if(is_null($postcode)){
+          return redirect()->route('getpostcode')->with(['alert'=>'danger','message'=>'Please Enter Postcode First']);
+        }elseif(Auth::check()){
+         return redirect()->route('book');
+        }else{
+            $deals = Deal::orderBy('id','asc')->get();
+            return view('webapp.steps.step2',compact('deals','postcode'));
+        }
+        
+    }
+    public function get_time_new()
+    {
+        $postcode = Session::get('success_postcode');
+        if(is_null($postcode)){
+          return redirect()->route('getpostcode')->with(['alert'=>'danger','message'=>'Please Enter Postcode First']);
+        }elseif(Auth::check()){
+         return redirect()->route('book');
+        }else{
+            return view('webapp.steps.step3');
+        }
+        
+    }
+    public function create_account()
+    {
+        $postcode = Session::get('success_postcode');
+        if(is_null($postcode)){
+          return redirect()->route('getpostcode')->with(['alert'=>'danger','message'=>'Please Enter Postcode First']);
+        }elseif(Auth::check()){
+         return redirect()->route('book');
+        }else{
+            return view('webapp.steps.step4',compact('postcode'));
+        }
+        
     }  
 
     

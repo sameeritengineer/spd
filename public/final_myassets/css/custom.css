@@ -33,9 +33,9 @@ h2.pagetitlemain.ct-register {
 .stepfourcontainer.work_time {
     display: none;
 }
-.stepcreateaccount {
+/*.stepcreateaccount {
     display: none;
-}
+}*/
 
 .modal-body ul {
     list-style: none;

@@ -24,8 +24,8 @@
                             <div class="col-md-10">
                                 <div class="contact_form_inner">
                                     <div class="contact_field">
-                                        <h3>Contatc Us</h3>
-                                        <p>Feel Free to contact us any time. We will get back to you as soon as we can!.</p>
+                                        <h3>Contact Us</h3>
+                                        <p>Please fill out the form below and a member of the team will get back to you.</p>
                                         <input type="text" class="form-control form-group" placeholder="Name" />
                                         <input type="text" class="form-control form-group" placeholder="Email" />
                                         <textarea class="form-control form-group" placeholder="Message"></textarea>
@@ -47,15 +47,15 @@
                             <h4>Contact Info</h4>
                             <div class="d-flex info_single align-items-center">
                                 <i class="fas fa-headset"></i>
-                                <span>+91 8009 054294</span>
+                                <span>+44 7985 125953</span>
                             </div>
                             <div class="d-flex info_single align-items-center">
                                 <i class="fas fa-envelope-open-text"></i>
-                                <span>info@flightmantra.com</span>
+                                <span>Info@splashanddrip.co.uk</span>
                             </div>
                             <div class="d-flex info_single align-items-center">
                                 <i class="fas fa-map-marked-alt"></i>
-                                <span>1000+ Travel partners and 65+ Service city across India, USA, Canada & UAE</span>
+                                <span>Feel free to give us a call and one of our dedicated team members will be happy to help</span>
                             </div>
             
                         </div>

@@ -23,6 +23,7 @@ Route::get('/my-account', 'MainworkController@account')->name('my-account');
 Route::post('edit_profile', 'MainworkController@edit_profile')->name('edit_profile');
 Route::post('/remove_car', 'MainworkController@remove_car')->name('remove_car');
 Route::get('/book', 'MainworkController@book')->name('book');
+Route::get('/book-date-time', 'MainworkController@book_date_time')->name('book-date-time');
 Route::get('/add-car', 'MainworkController@add_car')->name('add-car');
 Route::post('/add_newcar', 'MainworkController@add_newcar')->name('add_newcar');
 Route::get('/change-car', 'MainworkController@change_car')->name('change-car');
@@ -43,12 +44,14 @@ Route::get('/booking-success', 'MainworkController@booking_success')->name('book
 
 Route::get('/', 'MainworkController@index')->name('myhome');
 Route::get('/about-us', 'MainworkController@aboutus')->name('aboutus');
+Route::get('/carwash', 'MainworkController@carwash')->name('carwash');
+Route::get('/alloy-wheel', 'MainworkController@alloy_wheel')->name('alloy-wheel');
 Route::get('/services', 'MainworkController@services')->name('services');
 Route::get('/contact-us', 'MainworkController@contact')->name('contact');
 Route::post('/contact_form', 'MainworkController@contact_form')->name('contact_form');
 Route::get('/check-postcode', 'MainworkController@getpostcode')->name('getpostcode');
 Route::post('/check-postcode', 'MainworkController@checkpostcode')->name('checkpostcode');
-Route::get('/get-cartypes', 'MainworkController@cartypes')->name('cartypes');
+//Route::get('/get-cartypes', 'MainworkController@cartypes')->name('cartypes');
 Route::post('/get-license-plate', 'MainworkController@getlicense')->name('getlicense');
 Route::post('/get-deal-services', 'MainworkController@dealservices')->name('dealservices');
 Route::post('/workingday_time', 'MainworkController@workingday_time')->name('workingday_time');
@@ -56,3 +59,9 @@ Route::post('/main_form', 'MainworkController@main_form')->name('main_form');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/tokenz', 'MainworkController@generate_token')->name('tokenz');
+
+
+Route::get('/get-cartypes', 'MainworkController@get_cartypes_new')->name('get-cartypes');
+Route::get('/get-deals', 'MainworkController@get_deals_new')->name('get-deals');
+Route::get('/get-time', 'MainworkController@get_time_new')->name('get-time');
+Route::get('/create-account', 'MainworkController@create_account')->name('create-account');

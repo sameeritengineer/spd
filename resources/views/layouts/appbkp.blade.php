@@ -28,36 +28,27 @@
             <div class="row ">
                <div class="col-md-12">
          <nav class="navbar navbar-expand-lg navbar-light navbarcustom">
-            <!-- <a class="navbar-brand" href="#"> <img class="headerlogo" src="{{ asset('myassets/images/logo.png') }}" alt="image"></a> -->
+            <a class="navbar-brand" href="#"> <img class="headerlogo" src="{{ asset('myassets/images/logo.png') }}" alt="image"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"><img src="{{ asset('myassets/images/imge.png') }}"></span>
+            <span class="navbar-toggler-icon"><img src="images/imge.png"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav ml-auto">
                   <li class="nav-item ">
                      <a class="nav-link {{ (request()->routeIs('myhome')) ? 'active' : '' }}" href="{{route('myhome')}}">Home</a>
                   </li>
-                  @auth
-                  <li class="nav-item">
-                     <a class="nav-link {{ (request()->routeIs('book')) ? 'active' : '' }}" href="{{route('book')}}">Book Now</a>
-                  </li>
-                  @else
-                  <li class="nav-item">
-                     <a class="nav-link {{ (request()->routeIs('getpostcode')) ? 'active' : '' }}" href="{{route('getpostcode')}}">Book Now</a>
-                  </li>
-                 @endauth
-                  <li class="nav-item">
-                     <a class="nav-link {{ (request()->routeIs('aboutus')) ? 'active' : '' }}" href="{{route('aboutus')}}">About</a>
-                  </li>
                   <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Services
                      </a>
                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                       <a class="dropdown-item" href="{{route('alloy-wheel')}}">Alloy Wheel</a>
-                       <a class="dropdown-item" href="{{route('carwash')}}">Carwash</a>
+                       <a class="dropdown-item" href="#">Alloy Wheel</a>
+                       <a class="dropdown-item" href="#">Carwash</a>
                      </div>
                    </li>
+                   <li class="nav-item">
+                     <a class="nav-link {{ (request()->routeIs('aboutus')) ? 'active' : '' }}" href="{{route('aboutus')}}">About</a>
+                  </li>
                   <li class="nav-item">
                      <a class="nav-link {{ (request()->routeIs('contact')) ? 'active' : '' }}" href="{{route('contact')}}">Contact</a>
                   </li>
@@ -69,6 +60,15 @@
                      <a class="nav-link {{ (request()->routeIs('home')) ? 'active' : '' }}" href="{{route('home')}}">Settings</a>
                   </li>
                   @endauth
+                  @auth
+                  <li class="nav-item">
+                     <a class="nav-link {{ (request()->routeIs('book')) ? 'active' : '' }}" href="{{route('book')}}">Book Now</a>
+                  </li>
+                  @else
+                  <li class="nav-item">
+                     <a class="nav-link {{ (request()->routeIs('getpostcode')) ? 'active' : '' }}" href="{{route('getpostcode')}}">Book Now</a>
+                  </li>
+                 @endauth
                </ul>
             </div>
           </nav>
@@ -134,7 +134,7 @@
          <div class="row">
             <div class="col-md-4">
                <div class="footerlogo">
-                  <!-- <a href="#"><img class="footerlogoimg" src="{{ asset('myassets/images/logo.png') }}" alt="image"></a> -->
+                  <a href="#"><img class="footerlogoimg" src="{{ asset('myassets/images/logo.png') }}" alt="image"></a>
                </div>
                <p class="allrights">©2022  splashanddrip. All Rights Reserved</p>
             </div>
@@ -153,8 +153,9 @@
                </ul>
             </div>
             <div class="col-md-4 footercol">
-               <h4><a href="#">+44 7985 125953</a></h4>
-               <h5>Info@splashanddrip.co.uk</h5>
+               <h4><a href="#">07985125953</a></h4>
+               <h5>splashanddrip@gmail.com</h5>
+               <address>2972 Westheimer Rd. Santa Ana, Illinois 85486 </address>
                <h6 class="follow">Follow Us:</h5>
                <ul class="socils-icons">
                   <li class=""><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
@@ -167,9 +168,7 @@
 
 <!-- JS here -->
 <script src="{{ asset('final_myassets/js/bootstrap.min.js') }}"></script>
-@if(request()->routeIs('confirm-booking'))
 <script src="{{ asset('final_myassets/js/example1.js') }}"></script>
-@endif
      <script src="{{ asset('final_myassets/js/owl.carousel.js') }}"></script>
       <script src="{{ asset('final_myassets/js/owl.carousel.min.js') }}"></script>
       <script>
@@ -297,14 +296,93 @@ jQuery('#editProfileForm').on('submit', function (e) {
     return true;
 
 });
-
+jQuery('#mainFormInner').on('submit', function (e) {
+     e.preventDefault();
+     var token = $('meta[name="csrf-token"]').attr('content');
+     var form = $("#mainFormInner");
+     
+      $.ajax({
+             _token: token,
+             url: "{{ route('main_form') }}",
+             type: "POST",
+             data: form.serialize(),
+                     success: function(response) {
+                       console.log(response);
+                       if(response.status == false){
+                       $('.mainform_error').text(response.message);
+                       }else{
+                        window.location.href = "{{ route('summary')}}";
+                       }
+                     },
+                  });
+});
+jQuery('#mainForm').on('submit', function (e) {
+    if (document.getElementById("getplateForm").checkValidity()) {
+     e.preventDefault();
+     var token = $('meta[name="csrf-token"]').attr('content');
+     var form = $("#mainForm");
+     
+      $.ajax({
+             _token: token,
+             url: "{{ route('main_form') }}",
+             type: "POST",
+             data: form.serialize(),
+                     success: function(response) {
+                       console.log(response);
+                       if(response.status == false){
+                       $('.mainform_error').text(response.message);
+                       }else{
+                        window.location.href = "{{ route('summary')}}";
+                       }
+                     },
+                  });
+    }
+    return true;
+});
 $(document).on('click','.cartype_radiobox',function(){
   var cartype_id = $(this).find('#cartype_id').val();
   console.log(cartype_id);
   //$(this).find('#cartype_id').prop("checked", true);
 });
 
+jQuery('#getplateForm').on('submit', function (e) {
+    $('.licence_error').text('');
+    $("#overlay").show();
+    if (document.getElementById("getplateForm").checkValidity()) {
+        e.preventDefault();
+        var token = $('meta[name="csrf-token"]').attr('content');
+            var value = $('#getplateInput').val();
+            $('#licence_plate').val(value);
 
+            $.ajax({
+             _token: token,
+             url: "{{ route('getlicense') }}",
+             type: "POST",
+             data: {
+                 "value": value,
+                     },
+                     success: function(response) {
+                        if(response.error == 0){
+                         $(".licence_error").html('License Plate not Found');
+                         $(".response_data").html("");
+                        }else if(response.error == 1){
+                         $(".licence_error").html('License Plate not Valid');
+                         $(".response_data").html("");
+                         $("#overlay").hide();
+                        }else{
+                          $("#overlay").hide();
+                          $("#value_car").val(JSON.stringify(response));
+                          /*var table = "<table><tr><th>Make</th><th>Model</th><th>Year</th></tr><tr><td>"+response.make+"</td><td>"+response.model+"</td><td>"+response.yearOfManufacture+"</td></tr></table>";*/
+                          var table = '<div class="cardetailmainwrapper mt-3"><div class="row"><div class="col-md-12"><h3 class="cardeltitle"><b>Car Detail</b></h3></div></div><div class="row no-gutters cardetailbox"><div class="col-md-4"><h4>Make</h4></div><div class="col-md-4"><h4>Model</h4></div><div class="col-md-4"><h4>Year</h4></div><div class="col-md-4"><p>'+response.make+'</p></div><div class="col-md-4"><p>'+response.model+'</p></div><div class="col-md-4"><p>'+response.yearOfManufacture+'</p></div></div></div>';
+                            $(".response_data").html(table);
+                        }
+                      
+                     },
+                  });
+        
+    }
+    return true;
+});
 </script>
 <script type="text/javascript">
   $(document).on('click','#add_car',function(){
@@ -361,6 +439,95 @@ function scrollToElement(selector, time, verticalOffset) {
         scrollTop: offsetTop
     }, time);
 }
+  $(document).on('click','#next-1',function(){
+    if($('input[name=cartype]:checked').length > 0) {
+     $('.cartype_error').text('');
+     var value = $('#getplateInput').val();
+     var carval = $('#value_car').val();
+     if(value == ''){
+        $('.licence_error').text('Please Seacrh your license Plate');
+        scrollToElement('.selectcartype-section', 1000, -150);
+     }else if(carval == ''){
+        $('.licence_error').text('License Plate not Valid');
+        scrollToElement('.selectcartype-section', 1000, -150);
+     }else{
+        $('.licence_error').text('');
+        $('.steptwocontainer.car_types').hide();
+        $('.stepthreecontainer.car_deals').show();
+        $('h2.pagetitlemain.ct-cars').hide();
+        $('h2.pagetitlemain.ct-deals').show();
+        $('.license_form_data').hide();
+        $('.bk_postcode').hide();
+        $('.bk_cars').show();
+        $('.input-groupmainlpn').hide();
+        $('.response_data').hide();
+        $('#next-1').hide();
+        scrollToElement('.selectcartype-section', 1000, -150);
+
+     }
+    }else{
+      $('.cartype_error').text('Please Select Your Cartype');
+    }
+  });
+  $(document).on('click','.bk_cars',function(){
+     $('.bk_postcode').show();
+     $('.bk_cars').hide();
+     $('.steptwocontainer.car_types').show();
+     $('.stepthreecontainer.car_deals').hide();
+     $('h2.pagetitlemain.ct-cars').show();
+     $('h2.pagetitlemain.ct-deals').hide();
+     $('.license_form_data').show();
+     $('.input-groupmainlpn').show();
+     $('.response_data').show();
+     $('#next-1').show();
+  });
+  $(document).on('click','.deal_id',function(){
+   scrollToElement('.selectcartype-section', 1000, -150); 
+   var id = $(this).val();
+   $('.bk_cars').hide();
+   $('h2.pagetitlemain.ct-deals').hide();
+   $('.stepthreecontainer.car_deals').hide();
+   $('.bk_deals').show();
+   $(".stepfourcontainer.work_time").show();
+   //$('.row.work_time').show();
+   $('h2.pagetitlemain.ct-work_time').show();
+   $('.car_option').hide();
+   $('h2.pagetitlemain.ct-deals-inner').hide();
+   $('#next-2').show();
+
+   var date = $.datepicker.formatDate('yy-mm-dd', new Date());
+   $('#book_date').val(date);
+    var token = $('meta[name="csrf-token"]').attr('content');
+   $.ajax({
+                     _token: token,
+                     url: "{{ route('workingday_time') }}",
+                     type: "POST",
+                     data: {
+                         "date": date,
+                             },
+                             success: function(response) {
+                              if(response.status == true){
+                                $('.selector_worktime').html(response.payload);
+                            }else{
+                                $('.selector_worktime').html(response.message);
+                            }
+                             },
+                          });
+
+
+  });
+  $(document).on('click','.bk_deals',function(){
+     $('.stepthreecontainer.car_deals').show();
+     $('h2.pagetitlemain.ct-deals').show();
+     $('.bk_cars').show();
+     $('.bk_deals').hide();
+     $('.deal_id').prop('checked', false);
+     $('h2.pagetitlemain.ct-work_time').hide();
+     $('.stepfourcontainer.work_time').hide();
+     $('.car_option').show();
+     $('h2.pagetitlemain.ct-deals-inner').show();
+     $('#next-2').hide();
+  });
   $(document).on('click','.Si-deal',function(){
    var deal_id = $(this).attr('data-did');
    var deal_name = $(this).attr('data-title');
@@ -379,8 +546,35 @@ function scrollToElement(selector, time, verticalOffset) {
                      },
                   });
   });
- 
+ $(document).on('click','#next-2',function(){
+    scrollToElement('.selectcartype-section', 1000, -150);
+    if($('input[name=selector]:checked').length > 0) {
+     $('.worktime_error').text('');
+     $('.stepfourcontainer.work_time').hide();
+     $('.stepcreateaccount').show();
+     $('.bk_deals').hide();
+     $('.bk_worktime').show();
+     $('h2.pagetitlemain.ct-work_time').hide();
+     $('h2.pagetitlemain.ct-register').show();
+     $('.main_submitform').show();
+     $('.mainFormInnerSubmit').click();
+     $('#next-2').hide();
+     $('#next-3').show();
+  }else{
+      $('.worktime_error').text('Please Select Date and Time Slot');
+    }
 
+ });
+ $(document).on('click','.bk_worktime',function(){
+   $('h2.pagetitlemain.ct-register').hide();
+   $('.stepcreateaccount').hide();
+   $('h2.pagetitlemain.ct-work_time').show();
+   $('.bk_worktime').hide();
+   $('.bk_deals').show();
+   $('.stepfourcontainer.work_time').show();
+   $('#next-2').show();
+   $('#next-3').hide();
+ });
   
 </script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>

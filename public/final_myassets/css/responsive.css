@@ -50,3 +50,224 @@
         padding: 30px 0px 50px;
     }
     }
+ @media (min-width: 1200px) and (max-width: 1400px) { 
+    .feature-content {
+        padding-top: 109px;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) { 
+    .proficnal-sectionleft {
+        padding-left: 17px;
+    }
+    .main-home-sec-title {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+    .proficnal-sectionleft p, .appdownload-right p, .cleaning-right p {
+        font-size: 13px;
+        line-height: 23px;
+    }
+    .cleaning-right {
+        padding-left: 20px;
+        padding-right: 13px;
+    }
+    .signleft.homecontactus {
+        margin: 0;
+        position: unset;
+        top: 50%;
+        left: 50%;
+        transform: translate(-0%,0%);
+        width: 520px;
+        max-width: 95%;
+        padding-left: 5%;
+    }
+    section.contactus-section img.homesliderimage.w-100 {
+        min-height: 446px;
+    }
+    .home-banner .slide-itm-inner h2 {
+        font-size: 42px;
+    }
+    a.emgcybtn {
+        padding: 13px;
+    }
+    section.cartypecontainer-section .serimg {
+        min-height: 85px;
+        max-height: 85px;
+    }
+    a.serviceincbtn {
+        position: unset;
+        margin-top: 6px;
+    }  
+    .selectservicetype {
+        min-height: 221px;
+    } 
+    h2.pagetitlemain {
+        font-size: 43px;
+    }
+    div#example-1 fieldset {
+        margin: 0px!important;
+    }
+}
+@media (min-width: 320px) and (max-width: 767px) { 
+    .map_inner p {
+        width: 100%;
+    }
+    .col-12.px-4 {
+        padding: 0px!important;
+    }
+    .row.perstlrow.no-gutters.secmain fieldset {
+        margin: 0px;
+    }
+    section.Banner {
+        text-align: center;
+    }
+    section.Banner p {
+        margin: 0 auto;
+    }
+    img.aftertop {
+        top: -39px;
+    }
+    img.screen1,img.screen2{display:none;}
+    section.welcomeapp-section {
+        padding: 50px 0px;
+    }
+    section.welcomeapp-section p {
+        padding: 20px;;
+        font-size: 16px;
+    }
+    section.appscreens h2 {
+        font-size: 42px;
+        margin-bottom: 5px;
+        margin-top: 30px;
+    }
+    h2.Myreviews {
+        font-size: 45px;
+        line-height: 72px;
+        padding: 10px 0px 0px;
+    }
+    section.reviews-section {
+        padding: 0px 10px;
+    }
+    .media.mr-4 {
+        margin: 10px;
+    }
+    .footer img.aftertop {
+        top: -29px;
+        transform: rotate(0deg);
+    }
+    section.footer h1 {
+        font-size: 24px;
+        padding: 30px 0px;
+    }
+    section.footer {
+        padding: 30px 0px 50px;
+    }
+    .appdownload-right,.signleft.homecontactus {
+        position: unset;
+        transform: translate(-0%,5%);
+    }
+    .cleaning-right, .proficnal-sectionleft {
+        position: unset;
+        transform: translate(-0%,-0%);
+        padding: 15px;
+        width: 100%;
+        text-align: center;
+        margin-top: 28px;
+    }
+    .col-md-6.contactus-sectionright {
+        padding: 0px 0px 91px;
+    }
+    .naturecol {
+        margin: 13px 0px;
+    }
+    section.testmonial-sec {
+        padding-top: 50px;
+    }
+    .main-home-sec-title {
+        text-align: center;
+    }
+    .btnprficnl {
+        padding: 0px 0px;
+        text-align: center;
+        margin-top: 34px;
+    }
+    .slide-itm-inner {
+        position: unset;
+        width: 100%;
+    }
+    .home-banner .slide-itm-inner h2 {
+        font-size: 30px;
+        color: #30559a;
+        text-align: center;
+        margin-top: 13px;
+    }
+    .home-banner .slide-itm-inner p {
+        color: #000;
+        padding: 17px 15px 5px;
+        width: 100%;
+    }
+    #app-showcase .owl-dots {
+        bottom: -7px!important;
+    }
+    ul.socils-icons.topbannersocialicons {
+        top: 14%;
+    }
+    .bannerimgmain-box img {
+        min-height: 160px;
+    }
+    .welove-right {
+        transform: translate(-0%,-0%);
+        margin-top: 17px;
+        position: unset;
+    }
+    .welove-right p,h2.welove-sec-title {
+        width: 100%;
+        text-align: center;
+    }
+    .ownimg-img-left, .ceobox {
+        text-align: center;
+        padding-right: 29px;
+    }
+    .col-md-8.abgitouttop-right {
+        text-align: center;
+    }
+    .login-left {
+        position: unset;
+        transform: translate(-0%,-0%);
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+        margin-top: 58px;
+    }
+    .contact_field {
+        padding: 15px;
+    }
+    .contact_info_sec {
+        position: unset;
+        background-color: #1d4182;
+
+        width: 100%;
+        padding: 40px;
+        border-radius: 0px 0 0 0px;
+        color: #fff;
+        margin-top: 20px;
+    }
+    ul.socils-icons.topbannersocialicons li a i {
+        margin-bottom: 5px;
+    }
+    .footerlogo img {
+        margin-bottom: 20px;
+    }
+    span.navbar-toggler-icon img {
+        display: none;
+    }
+    .navbar-light .navbar-toggler {
+        background: #fff;
+    }
+    main {
+        padding-top: 23px;
+    }
+    .pagetitletopbanner h2 {
+        font-size: 39px;
+    }
+    }   
