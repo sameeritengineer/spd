@@ -15,8 +15,8 @@
               <div class="bannerimgmain">
                 <div class="bannerimgmain-box"><img class="homesliderimage" src="{{ asset('final_myassets/images/sliderimg1.jpg') }}"></div>
                 <div class="slide-itm-inner">
-                  <h2 >Car Wash, Valet & Diamond Cut</h2>
-                  <p>Download our Mobile App now and book your car wash, alloy & detailing service</p>
+                  <h2>Car Valeting, Detailing & Diamond Cut Alloy Service</h2>
+                  <p>Download our Mobile App now and book your Car Valet, Detailing or Alloy Wheel Refurbishment</p>
                    @auth
                   <a class="emgcybtn" href="{{route('book')}}">Book Now</a>
                   @else
@@ -62,15 +62,14 @@
             </div>
       </div>
       </section> -->
-      <section class="proficnal-section">
+      <!-- <section class="proficnal-section">
          <div class="container-fluid">
             <div class="row justify-content-center">
                <div class="col-md-6">
                   <div class="proficnal-sectionleft">
-                  <h2 class="main-home-sec-title">Car Valenting</h2>
-                  <p>Forget waiting in a queue to get your car valeted or alloys done. Our punctual, reliable service offers all of that and more from the comfort of your own home or workplace.</p>
+                  <h2 class="main-home-sec-title">Car Valeting</h2>
+                  <p>Why go somewhere and wait in a queue to get your car cleaned , when we can come to you and valet or detail your vehicle when it suits you and at your selected location wether it’s work, shopping or home. We will come and get the job done.</p>
                    <div class="btnprficnl">
-                     <!-- <a class="btnstyle-home numbercolor" href="#">07985125953</a> -->
                      @auth
                   <a class="btnstyle-home booknowcolor" href="{{route('book')}}">Book Now</a>
                   @else
@@ -84,26 +83,46 @@
                </div>
             </div>
          </div>
+      </section> -->
+      <section class="appdownload-section one">
+         <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                  <div class="appdownload-right">
+                  <h2 class="main-home-sec-title">Car Valeting</h2>
+                  <p>Why go somewhere and wait in a queue to get your car cleaned , when we can come to you and valet or detail your vehicle when it suits you and at your selected location wether it’s work, shopping or home. We will come and get the job done.</p> 
+                  <div class="btnprficnl">
+                     <!-- <a class="btnstyle-home numbercolor" href="#">07985125953</a> -->
+                     @auth
+                  <a class="btnstyle-home booknowcolor" href="{{route('book')}}">Book Now</a>
+                  @else
+                  <a class="btnstyle-home booknowcolor" href="{{route('getpostcode')}}">Book Now</a>
+                 @endauth
+                   </div>  
+                  </div>  
+               </div>
+               <div class="col-md-6 ">
+                  <div class="appdownload-img-left"><img class="washGif" src="{{ asset('final_myassets/images/xy.jpg') }}"></div> 
+               </div>
+            </div>
+         </div>
       </section>
-      <section class="appdownload-section">
+      <section class="appdownload-section two">
          <div class="container">
             <div class="row">
                <div class="col-md-6 ">
-                  <div class="appdownload-img-left text-center"><img class="appimage" src="{{ asset('final_myassets/images/appimage.png') }}"></div> 
+                  <div class="appdownload-img-left"><img class="valeting" src="{{ asset('final_myassets/images/ally.png') }}"></div> 
                </div>
                <div class="col-md-6">
                   <div class=" appdownload-right">
                   <h2 class="main-home-sec-title">Alloy Wheel Refurbishment</h2>
-                  <p>Mobile car valeting & detailing service now extending our services and doing mobile diamond cut and alloy wheel refurbishment, covering all of london and the surrounding areas.</p>
-                   <div class="btnprficnl">
-                     <a class="" href="#"><img class="appdown-img apple" src="{{ asset('final_myassets/images/app-store.png') }}"></a>
-                     <a class="" href="#"><img class="appdown-img" src="{{ asset('final_myassets/images/google-play.png') }}"></a>
-                   </div>  
+                  <p>Mobile car valeting & detailing service now extending our services and doing mobile diamond cut and alloy wheel refurbishment, covering all of london and the surrounding areas.</p>  
                   </div>  
                </div>
             </div>
          </div>
       </section>
+      
       <section class="washservice-sec">
          <div class="container">
             <div class="row">
@@ -151,6 +170,33 @@
                </div>
                   </div>
                </div>
+      </section>
+      <section class="appdownload-section">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6 ">
+                  <div class="appdownload-img-left text-center"><img class="appimage" src="{{ asset('final_myassets/images/appimage.png') }}"></div> 
+               </div>
+               <div class="col-md-6">
+                  <div class=" appdownload-right">
+                    <h2 class="main-home-sec-title">Car Valeting, Detailing & Diamond Cut Alloy Service</h2>
+                    <p>Download our Mobile App now and book your Car Valet, Detailing or Alloy Wheel Refurbishment.</p>
+                  <div class="btnprficnl">
+                     <!-- <a class="btnstyle-home numbercolor" href="#">07985125953</a> -->
+                     @auth
+                  <a class="btnstyle-home booknowcolor" href="{{route('book')}}">Book Now</a>
+                  @else
+                  <a class="btnstyle-home booknowcolor" href="{{route('getpostcode')}}">Book Now</a>
+                 @endauth
+                   </div> 
+                   <div class="btnprficnl">
+                     <a class="" href="#"><img class="appdown-img apple" src="{{ asset('final_myassets/images/app-store.png') }}"></a>
+                     <a class="" href="#"><img class="appdown-img" src="{{ asset('final_myassets/images/google-play.png') }}"></a>
+                   </div>  
+                  </div>  
+               </div>
+            </div>
+         </div>
       </section>
       <!-- <section class="cleaning-section">
          <div class="container-fluid p-0">

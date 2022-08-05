@@ -153,7 +153,7 @@ class MainworkController extends Controller
     {
         try 
             {
-                $booking = Order::with('deal:id,name','cartype:id,name','apply_promo:id,promo_id,user_id,total,grand_total,discount_price')->find($booking_id,['cartype_id','deal_id','payment_recipt','licence_plate','make','model','year','date','time','order_no','apply_promo_id','vat','service_fee','total','apply_promo_id']);
+                $booking = Order::with('deal:id,name','cartype:id,name','apply_promo:id,promo_id,user_id,total,grand_total,discount_price')->find($booking_id,['cartype_id','deal_id','payment_recipt','licence_plate','make','model','year','date','time','order_no','apply_promo_id','vat','service_fee','total','apply_promo_id','status','id']);
 
                 if(!is_null($booking)):
                     if(!is_null($booking['apply_promo']))
@@ -579,12 +579,13 @@ class MainworkController extends Controller
         $get_address = UserInformation::where('user_id',$id)->first();
         $get_cardata = UserCarData::where('user_id',$id)->where('mode','1')->first();
 
-        /*Stripe::setApiKey(config('stripe.stripe_secret'));
+        Stripe::setApiKey(config('stripe.stripe_secret'));
          $user = \App\User::whereHas('roles',function($q){ $q->where('role_name','user'); })->find($id);
         if(!is_null($user)):
                 $cards = Customer::allSources($user->stripe_customer);
-        endif;*/
-        return view('webapp.payment',compact('get_address','get_cardata','data'));
+                //dd($cards);
+        endif;
+        return view('webapp.payment',compact('get_address','get_cardata','data','cards'));
       }else {
           // sorry, you're out of time
          Session::forget('dealtype'); // and unset any other session vars for this task
@@ -790,12 +791,15 @@ class MainworkController extends Controller
                 $booking_datetime = date('Y-m-d H:i:s', strtotime("$request->date $request->time"));
                 if($request->booking_type == 0 || $request->booking_type == 2)
                 {
-                    $rules = ['stripe_id' => 'required'];
+                    if(empty($request->card_id)){
+                       $rules = ['stripe_id' => 'required'];
                     $validator = Validator::make($request->all(), $rules);
                     if ($validator->fails()) 
                     {
                         return response()->json(['status' => false,'message' => $validator->errors()->first()]);
                     }
+                    }
+                    
                     
                     $results = Shop::first();
                     try
@@ -815,11 +819,12 @@ class MainworkController extends Controller
                      }else{
                         $user_stripe_customer = $user->stripe_customer;     
                      }
-                          
+                          if(empty($request->card_id)){
                           $create_card = Customer::createSource($user_stripe_customer,['source' => $request->stripe_id]);
                           $customer = Customer::retrieve($user_stripe_customer);
                           $customer->default_source = $create_card->id;
                           $customer->save();
+                      }
                         
                     }
                     catch(\Stripe\Exception\CardException $e)
@@ -855,6 +860,7 @@ class MainworkController extends Controller
                             $amount = $request->total;
                         endif;
                         $amount = number_format($amount);
+                        if(empty($request->card_id)){
                         $charge = Charge::create(array(
                             'customer' => $user_stripe_customer,
                             'amount'   =>  $amount * 100,
@@ -862,6 +868,17 @@ class MainworkController extends Controller
                             'description' => "Booking for Splash N Drip",
                             'receipt_email'=> $user->email
                         ));
+                       }else{
+                        $charge = Charge::create(array(
+                            'customer' => $user_stripe_customer,
+                            'amount'   =>  $amount * 100,
+                            'currency' => $results->currency,
+                            'source' => $request->card_id,
+                            'description' => "Booking for Splash N Drip",
+                            'receipt_email'=> $user->email
+                        ));
+                        $request->stripe_id = $request->card_id;
+                       }
 
                         $status = $charge['status'];
                         if($status == "succeeded")
@@ -1136,7 +1153,115 @@ class MainworkController extends Controller
             return view('webapp.steps.step4',compact('postcode'));
         }
         
-    }  
+    }
+    public function saved_cards()
+    {
+        $id = Auth::id();
+        Stripe::setApiKey(config('stripe.stripe_secret'));
+         $user = \App\User::whereHas('roles',function($q){ $q->where('role_name','user'); })->find($id);
+        if(!is_null($user)):
+                $cards = Customer::allSources($user->stripe_customer);
+                //dd($cards);
+        endif;
+      return view('webapp.cards',compact('cards'));
+    }
+    public function delete_card(Request $request){
+
+    //dd($request->all());
+    $user = User::find($request->user()->id);
+    $stripe_customer = $user->stripe_customer;
+    Stripe::setApiKey(config('stripe.stripe_secret'));
+
+   $delete = Customer::deleteSource(
+      $stripe_customer,
+      $request->card_id,
+      []
+    );
+   if($delete->deleted == true){
+    return redirect()->route('saved-cards')->with(['alert'=>'success','message'=>'Your card has been deleted successfully.']);
+   }else{
+    return redirect()->route('saved-cards')->with(['danger'=>'success','message'=>'Something went wrong.']);
+   }
+
+  }  
+
+  public function add_card(Request $request){
+    $user = User::find($request->user()->id);
+    $stripe_customer = $user->stripe_customer;
+    Stripe::setApiKey(config('stripe.stripe_secret'));
+
+    
+    $current_card = \Stripe\Token::retrieve(
+      $request->stripe_id,
+      []
+    );
+    /* get current card that we want to add */
+    $current_card_fingerprint = $current_card->card->fingerprint;
+    $current_card_exp_month  = $current_card->card->exp_month;
+    $current_card_exp_year = $current_card->card->exp_year;
+    
+    $card_exist = 0;
+
+    /* get all cards */
+    $cards = Customer::allSources($stripe_customer);
+    foreach($cards->data as $data){
+        $fingerprint = $data->fingerprint;
+        $exp_month   = $data->exp_month;
+        $exp_year    = $data->exp_year;
+        if($fingerprint == $current_card_fingerprint && $exp_month == $current_card_exp_month && $current_card_exp_year == $exp_year){
+          $card_exist = 1;
+        }
+    }
+    //return $card_exist;
+
+    if($card_exist == 0){
+       
+    $create_card = Customer::createSource($stripe_customer,['source' => $request->stripe_id]);
+        if($create_card->id){
+        return redirect()->route('saved-cards')->with(['alert'=>'success','message'=>'Your card has been added successfully.']);
+        }else{
+        return redirect()->route('saved-cards')->with(['alert'=>'success','message'=>'Something went wrong.']);
+        }
+
+    }else{
+       return redirect()->route('saved-cards')->with(['alert'=>'danger','message'=>'Card already exist. No need to add it again']);
+    }
+
+    
+
+  }
+  public function add_review_order(Request $request)  
+    {
+        $rules = [ 'order_id'=>'required', 'rateing'=>'required', 'comment'=>'required' ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) 
+        {
+            return response()->json(['status' => false,'message' => $validator->errors()->first()]);
+        }
+        else
+        {
+            $have_review = \App\OrderReview::where('user_id', $request->user()->id)->where('order_id', $request->order_id)->first();
+            if($have_review){
+                $have_review->rateing =  $request->rateing;
+                $have_review->comment = $request->comment;
+            }
+            else
+            {
+                $have_review = new \App\OrderReview;
+                $have_review->user_id = $request->user()->id;
+                $have_review->order_id = $request->order_id;
+                $have_review->rateing =  $request->rateing;
+                $have_review->comment = $request->comment;
+            }
+            $have_review->save();
+            if($have_review->save()):
+                return redirect()->route('booking-detail',$request->order_id)->with(['alert'=>'success','message'=>'Review added successfully']);
+            else:
+                return redirect()->route('booking-detail',$request->order_id)->with(['alert'=>'success','message'=>'Something went wrong.']);
+            endif;
+
+        }
+    }
 
     
     

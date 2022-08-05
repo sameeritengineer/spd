@@ -26,10 +26,13 @@
                                     <div class="contact_field">
                                         <h3>Contact Us</h3>
                                         <p>Please fill out the form below and a member of the team will get back to you.</p>
-                                        <input type="text" class="form-control form-group" placeholder="Name" />
-                                        <input type="text" class="form-control form-group" placeholder="Email" />
-                                        <textarea class="form-control form-group" placeholder="Message"></textarea>
-                                        <button class="contact_form_submit">Send</button>
+                                        <form class="form-contact contact_form" action="{{route('contact_form')}}" method="post" id="contactForm">
+                                          @csrf
+                                        <input type="text" class="form-control form-group" placeholder="Name" name="name" required="" />
+                                        <input type="email" class="form-control form-group" placeholder="Email" name="email" required="" />
+                                        <textarea name="comment" class="form-control form-group" placeholder="Message" required=""></textarea>
+                                        <button class="contact_form_submit" type="submit">Send</button>
+                                      </form>
                                     </div>
                                 </div>
                             </div>

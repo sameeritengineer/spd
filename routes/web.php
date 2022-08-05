@@ -37,9 +37,10 @@ Route::get('/completed-bookings', 'MainworkController@completed_bookings')->name
 Route::get('/booking-detail/{id}', 'MainworkController@booking_detail')->name('booking-detail');
 Route::post('/addpayment_method_data', 'MainworkController@addpayment_method_data')->name('addpayment_method_data');
 Route::get('/booking-success', 'MainworkController@booking_success')->name('booking-success');
-
-
-
+Route::get('/saved-cards', 'MainworkController@saved_cards')->name('saved-cards');
+Route::post('/add-card', 'MainworkController@add_card')->name('add-card');
+Route::post('/delete-card', 'MainworkController@delete_card')->name('delete-card');
+Route::post('/add-order-review', 'MainworkController@add_review_order')->name('add-order-review');
 });
 
 Route::get('/', 'MainworkController@index')->name('myhome');

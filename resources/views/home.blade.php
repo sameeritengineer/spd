@@ -25,6 +25,7 @@
                 <div class="col-md-4">
                 <div class="tabcustom">
                 <a href="{{route('home')}}"><button class="tablinks active" >My Account</button></a>
+                <a href="{{route('saved-cards')}}"><button class="tablinks" >My Cards</button></a>
                 <a href="{{route('upcoming-bookings')}}"><button class="tablinks" >My Bookings</button></a>
                 <a href="{{route('faq')}}"><button class="tablinks">FAQ’s</button></a>
                 <a href="{{route('contact')}}"><button class="tablinks">Contact Us</button></a>

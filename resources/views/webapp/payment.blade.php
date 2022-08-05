@@ -142,6 +142,23 @@
             @endif   
 
                  <!--Example 1-->
+      @if(!empty($cards->data))   
+      <div class="row saved_cards_custmer bxm">
+        <div class="col-md-12">
+                        <h2>My Saved Cards</h2>
+                     </div>
+        @foreach($cards as $card)
+        <div card-id="{{$card->id}}" class="credit-card {{strtolower($card->brand)}} selectable">
+        <div class="credit-card-last4">
+            {{$card->last4}}
+        </div>
+        <div class="credit-card-expiry">
+            {{$card->exp_month}}/{{$card->exp_year}}
+        </div>
+       </div>
+       @endforeach
+      </div>
+      @endif
       <div class="cell example example1" id="example-1">
         <form id="publishform" method="post" action="{{route('addpayment_method_data')}}">
           @csrf
@@ -150,6 +167,7 @@
               <div id="example1-card"></div>
             </div>
           </fieldset>
+          <input type="hidden" name="card_id" id="card_id" value="">
           <input type="hidden" name="stripe_id" class="token">
           <input type="hidden" name="make" value="{{$get_cardata->make}}">
           <input type="hidden" name="model" value="{{$get_cardata->model}}">
@@ -198,5 +216,12 @@
 
 
     </main>
-
+<script type="text/javascript">
+$(document).on('click','.credit-card',function(){
+   var id = $(this).attr('card-id');
+   $('#card_id').val(id);
+   $('#publishform').submit();
+   
+  });
+</script>
 @endsection

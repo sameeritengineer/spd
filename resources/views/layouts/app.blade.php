@@ -167,7 +167,7 @@
 
 <!-- JS here -->
 <script src="{{ asset('final_myassets/js/bootstrap.min.js') }}"></script>
-@if(request()->routeIs('confirm-booking'))
+@if(request()->routeIs('confirm-booking') || request()->routeIs('saved-cards'))
 <script src="{{ asset('final_myassets/js/example1.js') }}"></script>
 @endif
      <script src="{{ asset('final_myassets/js/owl.carousel.js') }}"></script>
@@ -289,7 +289,7 @@ jQuery('#editProfileForm').on('submit', function (e) {
                        if(response.status == false){
                        $('.mainform_error').text(response.message);
                        }else{
-                        window.location.href = "{{ route('my-account')}}";
+                        window.location.href = "{{ route('home')}}";
                        }
                      },
                   });
