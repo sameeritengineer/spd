@@ -160,7 +160,13 @@
                         <div class="slide-itm-ser-img">@if(!is_null($deal->image)) <img class="serimg w-100" src="https://dev.theappkit.co.uk/Splash-and-drip/public/images/<?php echo $deal->image; ?>"> @endif</div>
                         <div class="ourinner">
                            <h2>{{$deal->name}}</h2>
-                           <p>{{$deal->description}}</p>
+                           @php
+
+                           $string = substr($deal->description,0,100);
+                           $string = substr($string,0,strrpos($string," "));
+
+                           @endphp
+                           <p>{{$string}}</p>
                         </div>
                      </div>
                      @endforeach  
