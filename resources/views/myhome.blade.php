@@ -98,11 +98,16 @@
                   @else
                   <a class="btnstyle-home booknowcolor" href="{{route('getpostcode')}}">Book Now</a>
                  @endauth
-                   </div>  
+                   </div>
+                   <div class="btnprficnl">
+                    <p class="ourapp_download">Download Our App Now</p>
+                     <a class="" href="#"><img class="appdown-img apple" src="{{ asset('final_myassets/images/app-store.png') }}"></a>
+                     <a class="" href="#"><img class="appdown-img" src="{{ asset('final_myassets/images/google-play.png') }}"></a>
+                   </div>   
                   </div>  
                </div>
                <div class="col-md-6 ">
-                  <div class="appdownload-img-left"><img class="washGif" src="{{ asset('final_myassets/images/xy.jpg') }}"></div> 
+                  <div class="appdownload-img-left text-center"><img class="washGif" src="{{ asset('final_myassets/images/xy.jpg') }}"></div> 
                </div>
             </div>
          </div>
@@ -111,12 +116,17 @@
          <div class="container">
             <div class="row">
                <div class="col-md-6 ">
-                  <div class="appdownload-img-left"><img class="valeting" src="{{ asset('final_myassets/images/ally.png') }}"></div> 
+                  <div class="appdownload-img-left"><img class="valeting" src="{{ asset('final_myassets/images/ally.jpg') }}"></div> 
                </div>
                <div class="col-md-6">
                   <div class=" appdownload-right">
                   <h2 class="main-home-sec-title">Alloy Wheel Refurbishment</h2>
-                  <p>Mobile car valeting & detailing service now extending our services and doing mobile diamond cut and alloy wheel refurbishment, covering all of london and the surrounding areas.</p>  
+                  <p>Mobile car valeting & detailing service now extending our services and doing mobile diamond cut and alloy wheel refurbishment, covering all of london and the surrounding areas.</p> 
+                  <div class="btnprficnl">
+                    <p class="ourapp_download">Download Our App Now</p>
+                     <a class="" href="#"><img class="appdown-img apple" src="{{ asset('final_myassets/images/app-store.png') }}"></a>
+                     <a class="" href="#"><img class="appdown-img" src="{{ asset('final_myassets/images/google-play.png') }}"></a>
+                   </div>  
                   </div>  
                </div>
             </div>
@@ -131,41 +141,30 @@
                </div>
                <div class="col-md-12">
                   <div id="service-wash" class="app-showcase-main owl-carousel ourworkslider">
-                     <div class="slide-itm-ser-main">
+                     <!-- <div class="slide-itm-ser-main">
                         <div class="slide-itm-ser-img"><img class="ser-icon-img" src="{{ asset('final_myassets/images/icon1.png') }}"></div>
                         <div class="ourinner">
                            <h2>Rain Repellent</h2>
                            <p>Vestibulum tortor risus, rutrum at congue sed ultricies finibus.</p>
-                           <!-- <ul class="list-inline">
+                           <ul class="list-inline">
                               <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
                               <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
                               <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
                               <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
                               <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                           </ul> -->
+                           </ul>
                         </div>
-                     </div>
+                     </div> -->
+                     @foreach($deals as $deal) 
                      <div class="slide-itm-ser-main">
-                        <div class="slide-itm-ser-img"><img class="ser-icon-img" src="{{ asset('final_myassets/images/icon1.png') }}"></div>
+                        <div class="slide-itm-ser-img">@if(!is_null($deal->image)) <img class="serimg w-100" src="https://dev.theappkit.co.uk/Splash-and-drip/public/images/<?php echo $deal->image; ?>"> @endif</div>
                         <div class="ourinner">
-                           <h2>Rain Repellent</h2>
-                           <p>Vestibulum tortor risus, rutrum at congue sed ultricies finibus.</p>
+                           <h2>{{$deal->name}}</h2>
+                           <p>{{$deal->description}}</p>
                         </div>
                      </div>
-                     <div class="slide-itm-ser-main">
-                        <div class="slide-itm-ser-img"><img class="ser-icon-img" src="{{ asset('final_myassets/images/icon1.png') }}"></div>
-                        <div class="ourinner">
-                           <h2>Rain Repellent</h2>
-                           <p>Vestibulum tortor risus, rutrum at congue sed ultricies finibus.</p>
-                        </div>
-                     </div>
-                     <div class="slide-itm-ser-main">
-                        <div class="slide-itm-ser-img"><img class="ser-icon-img" src="{{ asset('final_myassets/images/icon1.png') }}"></div>
-                        <div class="ourinner">
-                           <h2>Rain Repellent</h2>
-                           <p>Vestibulum tortor risus, rutrum at congue sed ultricies finibus.</p>
-                        </div>
-                     </div>
+                     @endforeach  
+                     
                </div>
                </div>
                   </div>
@@ -190,6 +189,7 @@
                  @endauth
                    </div> 
                    <div class="btnprficnl">
+                    <p class="ourapp_download">Download Our App Now</p>
                      <a class="" href="#"><img class="appdown-img apple" src="{{ asset('final_myassets/images/app-store.png') }}"></a>
                      <a class="" href="#"><img class="appdown-img" src="{{ asset('final_myassets/images/google-play.png') }}"></a>
                    </div>  
@@ -254,39 +254,49 @@
                   <div id="testmonial-slider" class="app-showcase-main owl-carousel ourworkslider">
                      <div class="testmonial-slider-itm">
                         <div class="testmonial-slider-itm-inner">
-                           <h2>Incredible Experience</h2>
-                           <p>We had an incredible experience working with Landify and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.</p>
+                           <h2>It looked like a brand new car!</h2>
+                           <p>They did an amazing job on my car. It looks better than when I first bought the car. The customer service was also amazing.</p>
                            <div class="media">
-                              <div class="testmonial-slider-itm-img mr-3"><img class="ser-icon-img" src="{{ asset('final_myassets/images/userimg.png') }}"></div>
+                              <div class="testmonial-slider-itm-img mr-3"><img class="ser-icon-img" src="{{ asset('final_myassets/images/rw1.jpg') }}"></div>
                               <div class="media-body">
-                                <h5 class="mt-0">Esther Howard</h5>
-                                <p>12/10/13</p>
+                                <h5 class="mt-0">Brandon M</h5>
+                                <!-- <p>12/10/13</p> -->
                               </div>
                             </div>
                         </div>
                      </div>
                      <div class="testmonial-slider-itm">
                         <div class="testmonial-slider-itm-inner">
-                           <h2>Incredible Experience</h2>
-                           <p>We had an incredible experience working with Landify and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.</p>
+                           <h2>Amazing & Very Professional</h2>
+                           <p>Splash N Drip came to the house on time and ready to work. They did an amazing job!</p>
                            <div class="media">
-                              <div class="testmonial-slider-itm-img mr-3"><img class="ser-icon-img" src="{{ asset('final_myassets/images/userimg.png') }}"></div>
+                              <div class="testmonial-slider-itm-img mr-3"><img class="ser-icon-img" src="{{ asset('final_myassets/images/rw4.jpg') }}"></div>
                               <div class="media-body">
-                                <h5 class="mt-0">Esther Howard</h5>
-                                <p>12/10/13</p>
+                                <h5 class="mt-0">Michael G</h5>
                               </div>
                             </div>
                         </div>
                      </div>
                      <div class="testmonial-slider-itm">
                         <div class="testmonial-slider-itm-inner">
-                           <h2>Incredible Experience</h2>
-                           <p>We had an incredible experience working with Landify and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.</p>
+                           <h2>Beautiful Job!!</h2>
+                           <p>Absolutely best detail wash wax service ever.  Highly recommend their service and they were great people to deal with!</p>
                            <div class="media">
-                              <div class="testmonial-slider-itm-img mr-3"><img class="ser-icon-img" src="{{ asset('final_myassets/images/userimg.png') }}"></div>
+                              <div class="testmonial-slider-itm-img mr-3"><img class="ser-icon-img" src="{{ asset('final_myassets/images/rw2.jpg') }}"></div>
                               <div class="media-body">
-                                <h5 class="mt-0">Esther Howard</h5>
-                                <p>12/10/13</p>
+                                <h5 class="mt-0">Diana T</h5>
+                              </div>
+                            </div>
+                        </div>
+                     </div>
+                      <div class="testmonial-slider-itm">
+                        <div class="testmonial-slider-itm-inner">
+                           <h2>Superb Service</h2>
+                           <p>Splash N Drip did a great job. Fast, friendly, efficient and my car look like it did when I bought it! What more can I ask . I would recommend them to anyone!</p>
+                           <div class="media">
+                              <div class="testmonial-slider-itm-img mr-3"><img class="ser-icon-img" src="{{ asset('final_myassets/images/rw3.jpg') }}"></div>
+                              <div class="media-body">
+                                <h5 class="mt-0">Tim M</h5>
                               </div>
                             </div>
                         </div>

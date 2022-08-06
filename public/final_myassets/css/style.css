@@ -243,6 +243,7 @@ h2.pagetitlemain {
 .bannerimgmain-box img {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  opacity: 0.8;
 }
 .daystatusbox label {
   display: block;
@@ -897,6 +898,7 @@ img.ser-icon-img {
   padding: 20px;
   margin: 22px 14px;
   text-align: center;
+  min-height: 390px;
 }
 .slide-itm-ser-main h2 {
   font-size: 19px;
@@ -1683,7 +1685,7 @@ img.valeting {
     border-radius: 24.5221px;
     padding: 20px;
     text-align: center;
-    width: 68%;
+    width: 70%;
 }
 img.washGif {
     width: 100%;
@@ -1694,8 +1696,31 @@ img.washGif {
     padding: 15px;
     /* margin: 22px 14px; */
     text-align: center;
-    width: 100%;
+    width: 70%;
 }
 section.appdownload-section.one {
     background: #fff;
+}
+p.ourapp_download {
+    font-size: 20px;
+    font-weight: 400;
+}
+img.serimg.w-100 {
+    text-align: center;
+    margin: 0 auto;
+    float: none;
+}
+.slide-itm-ser-img {
+    width: 40%;
+    /* text-align: center; */
+    float: none;
+    margin: 0 auto;
+}
+.appdownload-right-services {
+    text-align: center;
+    margin: 30px 0;
+    width: 450px;
+}
+.imgWrap img.img-fluid.w-100 {
+    height: 500px;
 }

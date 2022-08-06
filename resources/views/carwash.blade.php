@@ -19,10 +19,12 @@
         <div class="container">
            <div class="row no-gutters">
            	<div class="col-md-7 abgitouttop-right">
+           		<div class="appdownload-right-services">
                  <h2 class="abouttop-sec-title">Carwash</h2>
                  <p>We do everything from car cleaning, sanitation services and valeting. To detailing & machine polishing.</p>
                      <p>Our standard in and out clean includes a thorough clean inside the car wiping everything down, removing dust and dirt and giving a deep vacuum of the whole car.</p>
                      <p>Our deeper valets include all of the above plus a deep upholstery shampoo of all the fabrics in the car removing any tough stains and odours.</p>
+                 </div>
                 </div>
             <div class="col-md-5">
               <div class="ownimg-img-left"><img class="w-100 img-fluid" src="{{ asset('final_myassets/images/img02.jpg') }}" alt="image"></div> 

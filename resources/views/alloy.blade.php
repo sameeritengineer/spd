@@ -19,13 +19,16 @@
         <div class="container">
            <div class="row no-gutters">
            	<div class="col-md-7 abgitouttop-right">
-                 <h2 class="abouttop-sec-title">Alloy Wheels</h2>
+           		<div class="appdownload-right-services">
+           			<h2 class="abouttop-sec-title">Alloy Wheels</h2>
                  <p>If that isn’t enough for your vehicle then we can also do your alloys on the same day and bring them back to life, restoring them to OEM condition.</p>
                      <p>Whether you want diamond cut or standard alloy refurbs we are the people for you! With standard alloy refurbs we sand down the original paint on the alloys, refurb them and spray them to a a choice of silver or black.</p>
                      <p>Diamond cut alloys are done with our special machine for a sleek finish.</p>
+           		</div>
+                 
                 </div>
             <div class="col-md-5">
-              <div class="ownimg-img-left"><img style="border-radius: 20px" class="w-100 img-fluid" src="{{ asset('final_myassets/images/alloy.jpg') }}" alt="image"></div> 
+              <div class="ownimg-img-left"><img style="border-radius: 20px" class="w-100 img-fluid" src="{{ asset('final_myassets/images/alloy/alloy1.jpg') }}" alt="image"></div> 
            </div>
            </div>
         </div>
@@ -49,13 +52,21 @@
 							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
-									<img src="{{ asset('final_myassets/images/work/img25.png') }}" class="img-fluid w-100" alt="image description">
+									<img src="{{ asset('final_myassets/images/alloy/alloy1.jpg') }}" class="img-fluid w-100" alt="image description">
 								</div>
-								<div class="gPhootCaptionWrap px-3 py-2 px-sm-5 py-sm-4">
+								<!-- <div class="gPhootCaptionWrap px-3 py-2 px-sm-5 py-sm-4">
 									<h5 class="h5 text-center">
 										<a href="#">Sheet Cleaning</a>
 										<strong class="pgCategory font-weight-normal text-uppercase d-block">Washing, Interior</strong>
 									</h5>
+								</div> -->
+							</article>
+						</div>
+						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
+							<!-- gPhoColumn -->
+							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
+								<div class="imgWrap">
+									<img src="{{ asset('final_myassets/images/alloy/alloy2.jpg') }}" class="img-fluid w-100" alt="image description">
 								</div>
 							</article>
 						</div>
@@ -63,27 +74,7 @@
 							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
-									<img src="{{ asset('final_myassets/images/work/img26.png') }}" class="img-fluid w-100" alt="image description">
-								</div>
-								<div class="gPhootCaptionWrap px-3 py-2 px-sm-5 py-sm-4">
-									<h5 class="h5 text-center">
-										<a href="#">Interior Dusting</a>
-										<strong class="pgCategory font-weight-normal text-uppercase d-block">Auto Detail</strong>
-									</h5>
-								</div>
-							</article>
-						</div>
-						<div class="col-12 col-md-6 col-lg-4 isoCol exterior">
-							<!-- gPhoColumn -->
-							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
-								<div class="imgWrap">
-									<img src="{{ asset('final_myassets/images/work/img27.png') }}" class="img-fluid w-100" alt="image description">
-								</div>
-								<div class="gPhootCaptionWrap px-3 py-2 px-sm-5 py-sm-4">
-									<h5 class="h5 text-center">
-										<a href="#">Hand Polishing</a>
-										<strong class="pgCategory font-weight-normal text-uppercase d-block">Exterior</strong>
-									</h5>
+									<img src="{{ asset('final_myassets/images/alloy/alloy3.jpg') }}" class="img-fluid w-100" alt="image description">
 								</div>
 							</article>
 						</div>
@@ -91,86 +82,129 @@
 							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
-									<img src="{{ asset('final_myassets/images/work/img28.png') }}" class="img-fluid w-100" alt="image description">
-								</div>
-								<div class="gPhootCaptionWrap px-3 py-2 px-sm-5 py-sm-4">
-									<h5 class="h5 text-center">
-										<a href="#">Wax With Carnauba</a>
-										<strong class="pgCategory font-weight-normal text-uppercase d-block">Auto Detail</strong>
-									</h5>
+									<img src="{{ asset('final_myassets/images/alloy/alloy4.jpg') }}" class="img-fluid w-100" alt="image description">
 								</div>
 							</article>
 						</div>
-						<div class="col-12 col-md-6 col-lg-4 isoCol washing">
+						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
 							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
-									<img src="{{ asset('final_myassets/images/work/img29.png') }}" class="img-fluid w-100" alt="image description">
-								</div>
-								<div class="gPhootCaptionWrap px-3 py-2 px-sm-5 py-sm-4">
-									<h5 class="h5 text-center">
-										<a href="#">Machine Washing</a>
-										<strong class="pgCategory font-weight-normal text-uppercase d-block">Washing</strong>
-									</h5>
+									<img src="{{ asset('final_myassets/images/alloy/alloy5.jpg') }}" class="img-fluid w-100" alt="image description">
 								</div>
 							</article>
 						</div>
-						<div class="col-12 col-md-6 col-lg-4 isoCol interior">
+						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
 							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
-									<img src="{{ asset('final_myassets/images/work/img30.png') }}" class="img-fluid w-100" alt="image description">
-								</div>
-								<div class="gPhootCaptionWrap px-3 py-2 px-sm-5 py-sm-4">
-									<h5 class="h5 text-center">
-										<a href="#">Dashboard Cleaning</a>
-										<strong class="pgCategory font-weight-normal text-uppercase d-block">Interior</strong>
-									</h5>
+									<img src="{{ asset('final_myassets/images/alloy/alloy6.jpg') }}" class="img-fluid w-100" alt="image description">
 								</div>
 							</article>
 						</div>
-						<div class="col-12 col-md-6 col-lg-4 isoCol washing interior">
+						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
 							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
-									<img src="{{ asset('final_myassets/images/work/img31.png') }}" class="img-fluid w-100" alt="image description">
-								</div>
-								<div class="gPhootCaptionWrap px-3 py-2 px-sm-5 py-sm-4">
-									<h5 class="h5 text-center">
-										<a href="#">RMW Mini Cooper</a>
-										<strong class="pgCategory font-weight-normal text-uppercase d-block">Washing, Interior</strong>
-									</h5>
+									<img src="{{ asset('final_myassets/images/alloy/alloy7.jpg') }}" class="img-fluid w-100" alt="image description">
 								</div>
 							</article>
 						</div>
-						<div class="col-12 col-md-6 col-lg-4 isoCol washing repair">
+						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
 							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
-									<img src="{{ asset('final_myassets/images/work/img32.png') }}" class="img-fluid w-100" alt="image description">
-								</div>
-								<div class="gPhootCaptionWrap px-3 py-2 px-sm-5 py-sm-4">
-									<h5 class="h5 text-center">
-										<a href="p#">Scratch Repairing</a>
-										<strong class="pgCategory font-weight-normal text-uppercase d-block">Washing, Repair</strong>
-									</h5>
+									<img src="{{ asset('final_myassets/images/alloy/alloy8.jpg') }}" class="img-fluid w-100" alt="image description">
 								</div>
 							</article>
 						</div>
-						<div class="col-12 col-md-6 col-lg-4 isoCol exterior">
+						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
 							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
-									<img src="{{ asset('final_myassets/images/work/img33.png') }}" class="img-fluid w-100" alt="image description">
-								</div>
-								<div class="gPhootCaptionWrap px-3 py-2 px-sm-5 py-sm-4">
-									<h5 class="h5 text-center">
-										<a href="#">Headlight Restoring</a>
-										<strong class="pgCategory font-weight-normal text-uppercase d-block">Exterior</strong>
-									</h5>
+									<img src="{{ asset('final_myassets/images/alloy/alloy9.jpg') }}" class="img-fluid w-100" alt="image description">
 								</div>
 							</article>
 						</div>
+						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
+							<!-- gPhoColumn -->
+							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
+								<div class="imgWrap">
+									<img src="{{ asset('final_myassets/images/alloy/alloy10.jpg') }}" class="img-fluid w-100" alt="image description">
+								</div>
+							</article>
+						</div>
+						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
+							<!-- gPhoColumn -->
+							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
+								<div class="imgWrap">
+									<img src="{{ asset('final_myassets/images/alloy/alloy11.jpg') }}" class="img-fluid w-100" alt="image description">
+								</div>
+							</article>
+						</div>
+						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
+							<!-- gPhoColumn -->
+							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
+								<div class="imgWrap">
+									<img src="{{ asset('final_myassets/images/alloy/alloy12.jpg') }}" class="img-fluid w-100" alt="image description">
+								</div>
+							</article>
+						</div>
+						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
+							<!-- gPhoColumn -->
+							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
+								<div class="imgWrap">
+									<img src="{{ asset('final_myassets/images/alloy/alloy13.jpg') }}" class="img-fluid w-100" alt="image description">
+								</div>
+							</article>
+						</div>
+						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
+							<!-- gPhoColumn -->
+							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
+								<div class="imgWrap">
+									<img src="{{ asset('final_myassets/images/alloy/alloy14.jpg') }}" class="img-fluid w-100" alt="image description">
+								</div>
+							</article>
+						</div>
+						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
+							<!-- gPhoColumn -->
+							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
+								<div class="imgWrap">
+									<img src="{{ asset('final_myassets/images/alloy/alloy15.jpg') }}" class="img-fluid w-100" alt="image description">
+								</div>
+							</article>
+						</div>
+						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
+							<!-- gPhoColumn -->
+							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
+								<div class="imgWrap">
+									<img src="{{ asset('final_myassets/images/alloy/alloy16.jpg') }}" class="img-fluid w-100" alt="image description">
+								</div>
+							</article>
+						</div>
+						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
+							<!-- gPhoColumn -->
+							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
+								<div class="imgWrap">
+									<img src="{{ asset('final_myassets/images/alloy/alloy17.jpg') }}" class="img-fluid w-100" alt="image description">
+								</div>
+							</article>
+						</div>
+						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
+							<!-- gPhoColumn -->
+							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
+								<div class="imgWrap">
+									<img src="{{ asset('final_myassets/images/alloy/alloy18.jpg') }}" class="img-fluid w-100" alt="image description">
+								</div>
+							</article>
+						</div>
+	
+	
+	
+	
+	
+
+	
 					</div>
 				</div>
 			</section>
