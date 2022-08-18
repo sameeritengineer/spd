@@ -581,9 +581,12 @@ class MainworkController extends Controller
 
         Stripe::setApiKey(config('stripe.stripe_secret'));
          $user = \App\User::whereHas('roles',function($q){ $q->where('role_name','user'); })->find($id);
-        if(!is_null($user)):
+         //dd($user);
+        if(!is_null($user->stripe_customer)):
                 $cards = Customer::allSources($user->stripe_customer);
                 //dd($cards);
+        else:
+        $cards = 0;       
         endif;
         return view('webapp.payment',compact('get_address','get_cardata','data','cards'));
       }else {
