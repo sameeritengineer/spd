@@ -1165,6 +1165,8 @@ class MainworkController extends Controller
         if(!is_null($user)):
                 $cards = Customer::allSources($user->stripe_customer);
                 //dd($cards);
+        else:
+             $cards = 0;        
         endif;
       return view('webapp.cards',compact('cards'));
     }
