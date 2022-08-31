@@ -134,7 +134,7 @@
          <div class="row">
             <div class="col-md-4">
                <div class="footerlogo">
-                  <!-- <a href="#"><img class="footerlogoimg" src="{{ asset('myassets/images/logo.png') }}" alt="image"></a> -->
+                  <a href="#"><img class="footerlogoimg" src="{{ asset('myassets/images/logo.png') }}" alt="image"></a>
                </div>
                <p class="allrights">©2022  splashanddrip. All Rights Reserved</p>
             </div>
