@@ -67,13 +67,13 @@
                            </div>
                            <h4>{{$cartype->name}}</h4>
                            @if($cartype->id == 1)
-                           <span>smart car, Toyota yaris</span>
+                           <span>Smart Car, Toyota Yaris</span>
                            @elseif($cartype->id == 2)
-                           <span>Mercedes class, Audi A3, bmw 3 series</span>
+                           <span>Mercedes class, Audi A3, BMW 3 series</span>
                            @elseif($cartype->id == 3)
-                           <span>Mercedes s class, Audi A7, bmw 7 series</span>
+                           <span>Mercedes S class, Audi A7, BMW 7 series</span>
                            @elseif($cartype->id == 4)
-                           <span>vans</span>
+                           <span>Vans</span>
                            @else
                            <span></span>
                            @endif
