@@ -89,7 +89,7 @@
             <div class="row">
               <div class="col-md-6">
                   <div class="appdownload-right">
-                  <h2 class="main-home-sec-title" style="text-decoration: underline;">Car Valeting</h2>
+                  <h2 class="main-home-sec-title">Car Valeting</h2>
                   <p>Why go somewhere and wait in a queue to get your car cleaned , when we can come to you and valet or detail your vehicle when it suits you and at your selected location whether it’s work, shopping or home. We will come and get the job done.</p> 
                   <div class="btnprficnl">
                      <!-- <a class="btnstyle-home numbercolor" href="#">07985125953</a> -->
