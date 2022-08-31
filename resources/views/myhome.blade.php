@@ -16,7 +16,7 @@
                 <div class="bannerimgmain-box"><img class="homesliderimage" src="{{ asset('final_myassets/images/sliderimg1.jpg') }}"></div>
                 <div class="slide-itm-inner">
                   <h2>Car Valeting, Detailing & Diamond Cut Alloy Service</h2>
-                  <p>Download our Mobile App now and book your Car Valet, Detailing or Alloy Wheel Refurbishment</p>
+                  <p>Download our Mobile App now and book your Car Valet, Detail or Alloy Wheel Refurbishment</p>
                    @auth
                   <a class="emgcybtn" href="{{route('book')}}">Book Now</a>
                   @else
@@ -90,7 +90,7 @@
               <div class="col-md-6">
                   <div class="appdownload-right">
                   <h2 class="main-home-sec-title">Car Valeting</h2>
-                  <p>Why go somewhere and wait in a queue to get your car cleaned , when we can come to you and valet or detail your vehicle when it suits you and at your selected location wether it’s work, shopping or home. We will come and get the job done.</p> 
+                  <p>Why go somewhere and wait in a queue to get your car cleaned , when we can come to you and valet or detail your vehicle when it suits you and at your selected location whether it’s work, shopping or home. We will come and get the job done.</p> 
                   <div class="btnprficnl">
                      <!-- <a class="btnstyle-home numbercolor" href="#">07985125953</a> -->
                      @auth
@@ -120,8 +120,8 @@
                </div>
                <div class="col-md-6">
                   <div class=" appdownload-right">
-                  <h2 class="main-home-sec-title">Alloy Wheel Refurbishment</h2>
-                  <p>Mobile car valeting & detailing service now extending our services and doing mobile diamond cut and alloy wheel refurbishment, covering all of london and the surrounding areas.</p> 
+                  <h2 class="main-home-sec-title">Diamond Cut & Alloy Wheel Refurbishment</h2>
+                  <p>Mobile car valeting & detailing service now extending our services and providing mobile diamond cut and alloy wheel refurbishment, covering London and the surrounding areas. Please get in contact for a quote.</p> 
                   <div class="btnprficnl">
                     <p class="ourapp_download">Download Our App Now</p>
                      <a class="" href="#"><img class="appdown-img apple" src="{{ asset('final_myassets/images/app-store.png') }}"></a>

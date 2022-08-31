@@ -58,7 +58,7 @@
                             </div>
                             <div class="d-flex info_single align-items-center">
                                 <i class="fas fa-map-marked-alt"></i>
-                                <span>Feel free to give us a call and one of our dedicated team members will be happy to help</span>
+                                <span>Feel free to get in contact and one of our dedicated team members will be happy to help</span>
                             </div>
             
                         </div>

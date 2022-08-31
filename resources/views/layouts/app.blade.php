@@ -28,7 +28,7 @@
             <div class="row ">
                <div class="col-md-12">
          <nav class="navbar navbar-expand-lg navbar-light navbarcustom">
-            <!-- <a class="navbar-brand" href="#"> <img class="headerlogo" src="{{ asset('myassets/images/logo.png') }}" alt="image"></a> -->
+            <a class="navbar-brand" href="#"> <img class="headerlogo" src="{{ asset('myassets/images/logo.png') }}" alt="image"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"><img src="{{ asset('myassets/images/imge.png') }}"></span>
             </button>
@@ -54,8 +54,8 @@
                         Services
                      </a>
                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                       <a class="dropdown-item" href="{{route('alloy-wheel')}}">Alloy Wheel</a>
-                       <a class="dropdown-item" href="{{route('carwash')}}">Carwash</a>
+                       <a class="dropdown-item" href="{{route('alloy-wheel')}}">Alloy Wheels</a>
+                       <a class="dropdown-item" href="{{route('carwash')}}">Car Wash</a>
                      </div>
                    </li>
                   <li class="nav-item">

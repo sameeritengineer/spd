@@ -47,23 +47,57 @@
                  @endauth
 							</div>
 						</div>
-					<div class="row justify-content-center isoContentHolder mb-5 mb-lg-3">
-						<div class="col-12 col-md-6 col-lg-4 isoCol washing interior">
-							<!-- gPhoColumn -->
+					<div class="row justify-content-center isoContentHolder mb-5 mb-lg-3 alloywheels">
+						<div class="col-12 col-md-6 col-lg-6 isoCol autoDetail">
+							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
+								<div class="imgWrap">
+									<img src="{{ asset('final_myassets/images/alloy/before.jpg') }}" class="img-fluid w-100" alt="image description">
+								</div>
+							</article>
+						</div>
+						<div class="col-12 col-md-6 col-lg-6 isoCol autoDetail">
+							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
+								<div class="imgWrap">
+									<img src="{{ asset('final_myassets/images/alloy/after.jpg') }}" class="img-fluid w-100" alt="image description">
+								</div>
+							</article>
+						</div>
+						<div class="col-12 col-md-6 col-lg-6 isoCol autoDetail">
+							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
+								<div class="imgWrap">
+									<img src="{{ asset('final_myassets/images/alloy/before1.jpg') }}" class="img-fluid w-100" alt="image description">
+								</div>
+							</article>
+						</div>
+						<div class="col-12 col-md-6 col-lg-6 isoCol autoDetail">
+							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
+								<div class="imgWrap">
+									<img src="{{ asset('final_myassets/images/alloy/after1.jpg') }}" class="img-fluid w-100" alt="image description">
+								</div>
+							</article>
+						</div>
+						<div class="col-12 col-md-6 col-lg-6 isoCol autoDetail">
+							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
+								<div class="imgWrap">
+									<img src="{{ asset('final_myassets/images/alloy/before2.jpg') }}" class="img-fluid w-100" alt="image description">
+								</div>
+							</article>
+						</div>
+						<div class="col-12 col-md-6 col-lg-6 isoCol autoDetail">
+							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
+								<div class="imgWrap">
+									<img src="{{ asset('final_myassets/images/alloy/after2.jpg') }}" class="img-fluid w-100" alt="image description">
+								</div>
+							</article>
+						</div>
+						<!-- <div class="col-12 col-md-6 col-lg-4 isoCol washing interior">
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
 									<img src="{{ asset('final_myassets/images/alloy/alloy1.jpg') }}" class="img-fluid w-100" alt="image description">
 								</div>
-								<!-- <div class="gPhootCaptionWrap px-3 py-2 px-sm-5 py-sm-4">
-									<h5 class="h5 text-center">
-										<a href="#">Sheet Cleaning</a>
-										<strong class="pgCategory font-weight-normal text-uppercase d-block">Washing, Interior</strong>
-									</h5>
-								</div> -->
 							</article>
 						</div>
 						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
-							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
 									<img src="{{ asset('final_myassets/images/alloy/alloy2.jpg') }}" class="img-fluid w-100" alt="image description">
@@ -71,7 +105,6 @@
 							</article>
 						</div>
 						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
-							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
 									<img src="{{ asset('final_myassets/images/alloy/alloy3.jpg') }}" class="img-fluid w-100" alt="image description">
@@ -79,7 +112,6 @@
 							</article>
 						</div>
 						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
-							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
 									<img src="{{ asset('final_myassets/images/alloy/alloy4.jpg') }}" class="img-fluid w-100" alt="image description">
@@ -87,7 +119,6 @@
 							</article>
 						</div>
 						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
-							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
 									<img src="{{ asset('final_myassets/images/alloy/alloy5.jpg') }}" class="img-fluid w-100" alt="image description">
@@ -95,7 +126,6 @@
 							</article>
 						</div>
 						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
-							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
 									<img src="{{ asset('final_myassets/images/alloy/alloy6.jpg') }}" class="img-fluid w-100" alt="image description">
@@ -103,7 +133,6 @@
 							</article>
 						</div>
 						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
-							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
 									<img src="{{ asset('final_myassets/images/alloy/alloy7.jpg') }}" class="img-fluid w-100" alt="image description">
@@ -111,7 +140,6 @@
 							</article>
 						</div>
 						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
-							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
 									<img src="{{ asset('final_myassets/images/alloy/alloy8.jpg') }}" class="img-fluid w-100" alt="image description">
@@ -119,7 +147,6 @@
 							</article>
 						</div>
 						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
-							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
 									<img src="{{ asset('final_myassets/images/alloy/alloy9.jpg') }}" class="img-fluid w-100" alt="image description">
@@ -127,7 +154,6 @@
 							</article>
 						</div>
 						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
-							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
 									<img src="{{ asset('final_myassets/images/alloy/alloy10.jpg') }}" class="img-fluid w-100" alt="image description">
@@ -135,7 +161,6 @@
 							</article>
 						</div>
 						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
-							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
 									<img src="{{ asset('final_myassets/images/alloy/alloy11.jpg') }}" class="img-fluid w-100" alt="image description">
@@ -143,7 +168,6 @@
 							</article>
 						</div>
 						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
-							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
 									<img src="{{ asset('final_myassets/images/alloy/alloy12.jpg') }}" class="img-fluid w-100" alt="image description">
@@ -151,7 +175,6 @@
 							</article>
 						</div>
 						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
-							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
 									<img src="{{ asset('final_myassets/images/alloy/alloy13.jpg') }}" class="img-fluid w-100" alt="image description">
@@ -159,7 +182,6 @@
 							</article>
 						</div>
 						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
-							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
 									<img src="{{ asset('final_myassets/images/alloy/alloy14.jpg') }}" class="img-fluid w-100" alt="image description">
@@ -167,7 +189,6 @@
 							</article>
 						</div>
 						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
-							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
 									<img src="{{ asset('final_myassets/images/alloy/alloy15.jpg') }}" class="img-fluid w-100" alt="image description">
@@ -175,7 +196,6 @@
 							</article>
 						</div>
 						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
-							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
 									<img src="{{ asset('final_myassets/images/alloy/alloy16.jpg') }}" class="img-fluid w-100" alt="image description">
@@ -183,7 +203,6 @@
 							</article>
 						</div>
 						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
-							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
 									<img src="{{ asset('final_myassets/images/alloy/alloy17.jpg') }}" class="img-fluid w-100" alt="image description">
@@ -191,13 +210,12 @@
 							</article>
 						</div>
 						<div class="col-12 col-md-6 col-lg-4 isoCol autoDetail">
-							<!-- gPhoColumn -->
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
 									<img src="{{ asset('final_myassets/images/alloy/alloy18.jpg') }}" class="img-fluid w-100" alt="image description">
 								</div>
 							</article>
-						</div>
+						</div> -->
 	
 	
 	

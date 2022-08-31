@@ -43,12 +43,14 @@
                     </div>
                   </div>
                   <div class="col-12 col-sm-7 col-lg-12 col-xl-7">
-                    <p>More like it was the first of its kind in the state, serving customers looking for a high quality car wash. a reasonable price, with friendly relationship.</p>
+                    <p>A first of its kind in the area by serving customers looking for high quality car wash.</p>
+                    <p>At a reasonable price, with a friendly nature of 
+relationship.</p>
                     <ul class="list-unstyled pcFeaturesList pcfAlt pl-0 mb-0">
-                      <li><strong class="fwMedium text-primary">Safty: </strong>Use all senses and take action</li>
-                      <li><strong class="fwMedium text-primary">Integrity: </strong>Stay honest; do what’s right</li>
-                      <li><strong class="fwMedium text-primary">Fun: </strong>Connect, compete, and laugh</li>
-                      <li><strong class="fwMedium text-primary">Teamwork: </strong>Help others before they ask any help to us.</li>
+                      <li><strong class="fwMedium text-primary">Safty: </strong>Take action, considering all factors </li>
+                      <li><strong class="fwMedium text-primary">Integrity: </strong>Stay honest and do what is right</li>
+                      <li><strong class="fwMedium text-primary">Fun: </strong>Connect, compete and laugh</li>
+                      <li><strong class="fwMedium text-primary">Teamwork: </strong>Help others before they ask any help from us</li>
                     </ul>
                   </div>
                 </div>
@@ -62,15 +64,16 @@
                     </div>
                   </div>
                   <div class="col-12 col-sm-7 col-lg-12 col-xl-7">
-                    <p>Everyday we strive to create the best possible experience for both our new customers and our carwash members.  It’s not just part of our culture, it is our culture by listening to you and applying the principles.</p>
+                    <p>Everyday we strive to create the best possible experience for both our new customers and our community of carwash members.</p>
+                    <p>It is not just part of our culture, it is our culture by listening to you and applying the principles.</p>
                     <ul class="pvList list-unstyled pl-0 mb-0">
                       <li>
                         <strong class="d-block mb-0 text-primary fwMedium">Our Purpose</strong>
-                        <p>Create smiles &amp; lifetime customers.</p>
+                        <p>Create smiles & lifetime customers.</p>
                       </li>
                       <li>
                         <strong class="d-block mb-0 text-primary fwMedium">Our Vision</strong>
-                        <p>To be the Service Industry Leader.</p>
+                        <p>To be a Service Industry Leader.</p>
                       </li>
                     </ul>
                   </div>

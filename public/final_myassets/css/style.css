@@ -233,6 +233,10 @@ h2.pagetitlemain {
   background: #FFFFFF;
   box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.09);
   border-radius: 20px;
+  min-height: 312px;
+}
+.selectcartype span {
+    font-size: 14px;
 }
 .bannerimgmain-box {
   background: #fff;
@@ -261,13 +265,29 @@ h2.pagetitlemain {
   position: absolute;
   top: 5px;
   right: 6px;
-  height: 40px;
-  width: 40px;
-  line-height: 41px;
+  height: 36px;
+  width: 36px;
+  line-height: 36px;
   text-align: center;
   border-radius: 50%;
   background: #1e3c7b;
   box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.25);
+}
+a.btn.btn-primary.s-book-now {
+    border-bottom: 2px solid #002D84;
+    background-color: #F0F5FF;
+    padding: 4px 15px;
+    font-size: 14px;
+    border-radius: 8px;
+    transition: all ease-in-out 0.5s;
+    color: #002D84;
+    position: absolute;
+    right: 23px;
+    text-align: center;
+    bottom: -5px;
+}
+p.already_account {
+    text-align: center;
 }
 .daystatusbox input[type="radio"]:checked + label h4 {
   color: #fff;
@@ -337,17 +357,22 @@ button.btn.btnownstyle.mx-w300 {
   min-height: 233px;
 }
 a.serviceincbtn {
-  border-bottom: 2px solid #002D84;
-  background-color: #F0F5FF;
-  padding: 4px 15px;
-  font-size: 14px;
-  border-radius: 8px;
-  transition: all ease-in-out 0.5s;
-  color: #002D84;
-  position: absolute;
-  right: 23px;
-  text-align: center;
-  bottom: -5px;
+    border-bottom: 2px solid #002D84;
+    background-color: #F0F5FF;
+    padding: 0 8px;
+    font-size: 13px;
+    border-radius: 8px;
+    transition: all ease-in-out 0.5s;
+    color: #002D84;
+    /* position: absolute; */
+    /* right: 23px; */
+    /* text-align: center; */
+    /* bottom: -5px; */
+}
+span.service_span {
+    position: relative;
+    /* right: -87px; */
+    float: right;
 }
 .serimg {
   min-height: 128px;
@@ -697,8 +722,9 @@ img.ownimg {
   width: 300px;
 }
 .ownimg-img-left,.ceobox {
-  text-align: right;
-  padding-right: 29px;
+  /*text-align: right;
+  padding-right: 29px;*/
+  width: 350px;
 }
 h2.welove-sec-title {
   font-size: 35px;
@@ -913,6 +939,7 @@ img.ser-icon-img {
   font-size: 31px;
   font-weight: 600;
   margin-bottom: 12px;
+  font-weight: 700;
 }
 .naturecol {
   background: #fff;
@@ -1335,9 +1362,9 @@ h4.h4.mb-6.abt {
     padding-left: 0px;
 }
 .aboutus-para p {
-    font-size: 14px;
-    line-height: 25px;
-    /* margin-bottom: 24px; */
+    font-size: 15px;
+    line-height: 28px;
+    margin-bottom: 24px;
 }
 .pcFeaturesList.pcfAlt {
     font-size: 15px;
@@ -1721,6 +1748,11 @@ img.serimg.w-100 {
     margin: 30px 0;
     width: 450px;
 }
-.imgWrap img.img-fluid.w-100 {
-    height: 500px;
+.alloywheels article.gPhoColumnGrid.position-relative.overflow-hidden.mb-lg-4 {
+    width: 450px;
+    text-align: center;
+    margin: 0 auto;
+}
+.carwash article.gPhoColumnGrid.position-relative.overflow-hidden.mb-lg-4 {
+    height: 450px;
 }

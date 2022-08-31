@@ -7,7 +7,7 @@
             <div class="row justify-content-center no-gutters">
                <div class="col-md-6">
                   <div class="login-left" >
-                     <h2>Bringing back that new car feeling</h2>
+                     <h2>Bringing back that new vehicle feeling</h2>
                      <form action="{{route('checkpostcode')}}" method="post">
                       @csrf
                      <div class="form-group">

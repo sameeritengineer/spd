@@ -22,6 +22,10 @@
                   <div class="col-md-12">
                      <div class="signleft">
                         <div class="row">
+                          <div class="col-md-12">
+                              <p class="already_account">Already have an account? <a href="{{route('login')}}">Log In</a></p>
+                           </div>
+                      
                            <div class="col-md-12">
                               <h3 class="cardeltitle mt-4 mb-2"><b>Basic Info</b></h3>
                               <p class="mainform_error"></p>
