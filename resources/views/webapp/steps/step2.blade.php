@@ -33,8 +33,10 @@
                                  <h3>{{$deal->name}}</h3>
                                  <h6><span>@if($deal->hour>0){{$deal->hour}}@endif @if($deal->hour==1)hour @elseif($deal->hour>1)hours @endif</span><span> @if($deal->minute>0){{$deal->minute}} minutes @endif</span><span class="service_span"><a class="serviceincbtn btn btn-primary Si-deal" data-title="{{$deal->name}}"  data-did="{{$deal->id}}" data-toggle="modal" data-target="#exampleModal">Service Includes</a></span></h6>
                                  <p>{{$deal->description}}</p>
-                                 <h4>£{{$deal->price}}</h4>
-                                 <a class="btn btn-primary s-book-now">Book Now</a>
+                                 <div class="book-nowwww">
+                                 <h4><span style="font-size: 16px">£{{$deal->price}}</span><span><a class="btn btn-primary s-book-now">Book Now</a></span></h4>
+                                 
+                                 </div>
                               </div>
                            </div>
                            </div>

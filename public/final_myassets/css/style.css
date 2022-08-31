@@ -274,17 +274,20 @@ h2.pagetitlemain {
   box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.25);
 }
 a.btn.btn-primary.s-book-now {
-    border-bottom: 2px solid #002D84;
+    border-bottom: 2px solid #367d40;
     background-color: #F0F5FF;
     padding: 4px 15px;
-    font-size: 14px;
+    font-size: 12px;
     border-radius: 8px;
     transition: all ease-in-out 0.5s;
-    color: #002D84;
-    position: absolute;
-    right: 23px;
-    text-align: center;
-    bottom: -5px;
+    color: #fff;
+    position: relative;
+    /* right: 23px; */
+    /* text-align: center; */
+    /* bottom: -5px; */
+    float: right;
+    background: #4a9154;
+    border: #367d40;
 }
 p.already_account {
     text-align: center;
@@ -359,8 +362,8 @@ button.btn.btnownstyle.mx-w300 {
 a.serviceincbtn {
     border-bottom: 2px solid #002D84;
     background-color: #F0F5FF;
-    padding: 0 8px;
-    font-size: 13px;
+    padding: 0 5px;
+    font-size: 10px;
     border-radius: 8px;
     transition: all ease-in-out 0.5s;
     color: #002D84;
@@ -371,8 +374,7 @@ a.serviceincbtn {
 }
 span.service_span {
     position: relative;
-    /* right: -87px; */
-    float: right;
+    margin-left: 5px;
 }
 .serimg {
   min-height: 128px;
