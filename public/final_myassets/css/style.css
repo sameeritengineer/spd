@@ -1146,6 +1146,7 @@ section.washservice-sec {
 .proficnal-sectionleft p,.appdownload-right p,.cleaning-right p {
   font-size: 14px;
   line-height: 27px;
+  text-align: center;
 }
 .naturecol p {
   font-size: 14px;
