@@ -1760,3 +1760,6 @@ img.serimg.w-100 {
 .carwash article.gPhoColumnGrid.position-relative.overflow-hidden.mb-lg-4 {
     height: 450px;
 }
+.fa-tiktok::before {
+  content: url(../images/tik-tok.png);
+}
