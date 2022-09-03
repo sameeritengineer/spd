@@ -39,9 +39,9 @@
                             <div class="col-md-2">
                                 <div class="right_conatct_social_icon d-flex align-items-end">
                                    <div class="socil_item_inner d-flex">
-                                      <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-                                      <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                      <li class="contact"><a target="_blank" href="https://www.facebook.com/splashanddrip"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
+            <li class="contact"><a target="_blank" href="https://www.instagram.com/splashanddrip/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            <li class="contact"><a href="http://www.tiktok.com/splashanddrip" class="googleplus contact" target="_blank"><i class="fa fa-tiktok"></i></a></li>
                                    </div>
                                 </div>
                             </div>

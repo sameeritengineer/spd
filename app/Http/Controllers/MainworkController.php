@@ -238,9 +238,71 @@ class MainworkController extends Controller
         
 
     }
+    public function getLnt($zip){
+    $url = "https://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($zip)."&sensor=false&key=AIzaSyDQM082qVXgJB4Ba8CW8e7Oor1eAmtWvXc";
+    $result_string = file_get_contents($url);
+    $result = json_decode($result_string, true);
+    if($result['status'] == 'ZERO_RESULTS'){
+          return 'oops';
+    }else{
+        $result1[]=$result['results'][0];
+        $result2[]=$result1[0]['geometry'];
+        $result3[]=$result2[0]['location'];
+        return $result3[0];   
+    }
+    
+    }
+
     public function checkpostcode(Request $request)
     {
-       $data = str_replace(' ', '', trim($request->postcode));
+        $shop_postcode =  Shop::first();        
+        $zip1 = str_replace(' ', '', $request->postcode);
+        $zip2 = str_replace(' ', '', $shop_postcode->shop_location);
+        $unit = "K";
+
+    $first_lat = $this->getLnt($zip1);
+    if($first_lat == 'oops'){
+      return redirect()->route('getpostcode')->with(['alert'=>'danger','message'=>'Postcode is not correct']);
+    }else{
+      $next_lat = $this->getLnt($zip2);
+    $lat1 = $first_lat['lat'];
+    $lon1 = $first_lat['lng'];
+    $lat2 = $next_lat['lat'];
+    $lon2 = $next_lat['lng']; 
+    $theta=$lon1-$lon2;
+    $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +
+    cos(deg2rad($lat1)) * cos(deg2rad($lat2)) *
+    cos(deg2rad($theta));
+    $dist = acos($dist);
+    $dist = rad2deg($dist);
+    $miles = $dist * 60 * 1.1515;
+    $unit = strtoupper($unit);
+
+    if ($unit == "K"){
+    //return ($miles * 1.609344)." ".$unit;
+         $total_miles = $miles * 1.609344 * 0.62137119;
+         if($total_miles <= 18){
+                session(['success_postcode' => $request->postcode]);
+                //return response()->json(['status'=>true,'data'=>$post_Data,'message'=>"Thanks for using Corner Shop App."]);
+                return redirect()->route('get-cartypes')->with(['alert'=>'success','message'=>'Thanks.']);
+            }
+            else
+            {
+                //return response()->json(['status'=>false,'message'=>"Sorry,We can't deliver to this area."]);
+                return redirect()->route('getpostcode')->with(['alert'=>'danger','message'=>"Sorry,We can't deliver to this area."]);
+            }
+    }  
+    }
+    
+ /*   else if ($unit =="N"){
+    return ($miles * 0.8684)." ".$unit;
+    }
+    else{
+    return $miles." ".$unit;
+    }*/
+
+
+       /*$data = str_replace(' ', '', trim($request->postcode));
        $postcode =  strtoupper($data);
        if(strlen($postcode) == 6)
        {
@@ -274,7 +336,7 @@ class MainworkController extends Controller
         {
             //return response()->json(['status'=>false,'message'=>"Postcode is not correct"]); 
             return redirect()->route('getpostcode')->with(['alert'=>'danger','message'=>'Postcode is not correct']);
-        }
+        }*/
     }
     public function cartypes()
     {

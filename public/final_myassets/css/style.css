@@ -1763,3 +1763,11 @@ img.serimg.w-100 {
 .fa-tiktok::before {
   content: url(../images/tik-tok.png);
 }
+.socil_item_inner li.contact a {
+    font-size: 18px !important;
+    color: #000;
+    /* background: 0 4px; */
+    background: #fff;
+    padding: 0px 4px;
+    border-radius: 4px;
+}

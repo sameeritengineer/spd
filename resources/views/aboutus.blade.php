@@ -23,9 +23,11 @@
            </div>
               <div class="col-md-7 abgitouttop-right">
                  <h2 class="abouttop-sec-title">Who We Are?</h2>
-                 <p>Founded in 2018, we work on all types of cars and vans including lease cars & luxurious vehicles so you can trust that the car looks as good as new when finished. We take great pride in everything we do using not only the latest but best equipment and products to ensure the finest possible finish.</p>
-                 <p>We do everything from car cleaning, sanitation services and valeting. To detailing & machine polishing. </p>
-                     <p>Our standard in and out clean includes a thorough clean inside the car wiping everything down, removing dust and dirt and giving a deep vacuum of the whole car. </p>
+                 <p>Founded in 2018, we work on all types of cars and vans including lease cars & luxurious vehicles so you can trust that the car looks as good as new when finished.</p>
+                 <p>We take great pride in everything we do using not only the latest but best equipment and products to ensure the finest possible finish.</p>
+                 <p>We do everything from car cleaning, sanitation services and valeting. To detailing & machine polishing.</p>
+                 <p>Our standard in and out clean includes a thorough clean inside the car wiping everything down, removing dust and dirt and giving a def vacuum of the whole car. </p>
+                 <p>We also offer diamond cut and alloy wheel refurbishment, returning your car back to OEM condition like nothing ever happened.</p>
                 </div>
               
            </div>
@@ -43,14 +45,13 @@
                     </div>
                   </div>
                   <div class="col-12 col-sm-7 col-lg-12 col-xl-7">
-                    <p>A first of its kind in the area by serving customers looking for high quality car wash.</p>
-                    <p>At a reasonable price, with a friendly nature of 
-relationship.</p>
+                    <p>A first of its kind in the area by serving customers looking for high quality car wash and alloy refurbishment.</p>
+                    <p>At a reasonable price, with a friendly nature of relationship.</p>
                     <ul class="list-unstyled pcFeaturesList pcfAlt pl-0 mb-0">
-                      <li><strong class="fwMedium text-primary">Safty: </strong>Take action, considering all factors </li>
+                      <li><strong class="fwMedium text-primary">Safety: </strong>Take action, considering all factors </li>
                       <li><strong class="fwMedium text-primary">Integrity: </strong>Stay honest and do what is right</li>
                       <li><strong class="fwMedium text-primary">Fun: </strong>Connect, compete and laugh</li>
-                      <li><strong class="fwMedium text-primary">Teamwork: </strong>Help others before they ask any help from us</li>
+                      <li><strong class="fwMedium text-primary">Teamwork: </strong>Help others before they ask and get the task complete.</li>
                     </ul>
                   </div>
                 </div>
@@ -64,7 +65,7 @@ relationship.</p>
                     </div>
                   </div>
                   <div class="col-12 col-sm-7 col-lg-12 col-xl-7">
-                    <p>Everyday we strive to create the best possible experience for both our new customers and our community of carwash members.</p>
+                    <p>Everyday we strive to create the best possible experience for both our new customers and our community of carwash members/alloy members</p>
                     <p>It is not just part of our culture, it is our culture by listening to you and applying the principles.</p>
                     <ul class="pvList list-unstyled pl-0 mb-0">
                       <li>

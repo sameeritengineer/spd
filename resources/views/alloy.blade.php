@@ -21,9 +21,9 @@
            	<div class="col-md-7 abgitouttop-right">
            		<div class="appdownload-right-services">
            			<h2 class="abouttop-sec-title">Alloy Wheels</h2>
-                 <p>If that isn’t enough for your vehicle then we can also do your alloys on the same day and bring them back to life, restoring them to OEM condition.</p>
-                     <p>Whether you want diamond cut or standard alloy refurbs we are the people for you! With standard alloy refurbs we sand down the original paint on the alloys, refurb them and spray them to a a choice of silver or black.</p>
-                     <p>Diamond cut alloys are done with our special machine for a sleek finish.</p>
+                 <p>If that isn't enough for your vehicle then we can also do your alloys on the same day and bring them back to life, restoring them to OEM condition.</p>
+                     <p>Whether you want diamond cut or standard alloy refurbs we are the people for you! With standard alloy refurbs we sand down the original paint on the alloys and get rid of the damage. Refurbish them and spray them back to a colour of your choice(some colours cost more than others).</p>
+                     <p>Diamond cut alloys are done with our special CNC lathe machine for a sleek but professional finish.</p>
            		</div>
                  
                 </div>
@@ -48,14 +48,14 @@
 							</div>
 						</div>
 					<div class="row justify-content-center isoContentHolder mb-5 mb-lg-3 alloywheels">
-						<div class="col-12 col-md-6 col-lg-6 isoCol autoDetail">
+						<div class="col-12 col-md-6 col-lg-6 isoCol autoDetail mob">
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
 									<h3>BEFORE</h3>
 								</div>
 							</article>
 						</div>
-						<div class="col-12 col-md-6 col-lg-6 isoCol autoDetail">
+						<div class="col-12 col-md-6 col-lg-6 isoCol autoDetail mob">
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
 									<h3>AFTER</h3>
@@ -163,7 +163,7 @@
 						<div class="col-12 col-md-6 col-lg-6 isoCol autoDetail">
 							<article class="gPhoColumnGrid position-relative overflow-hidden mb-lg-4">
 								<div class="imgWrap">
-									<img src="{{ asset('final_myassets/images/alloy/before7.jpg') }}" class="img-fluid w-100" alt="image description">
+									<img src="{{ asset('final_myassets/images/alloy/before6.jpg') }}" class="img-fluid w-100" alt="image description">
 								</div>
 							</article>
 						</div>
