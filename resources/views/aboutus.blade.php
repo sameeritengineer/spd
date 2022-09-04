@@ -65,7 +65,7 @@
                     </div>
                   </div>
                   <div class="col-12 col-sm-7 col-lg-12 col-xl-7">
-                    <p>Everyday we strive to create the best possible experience for both our new customers and our community of carwash members/alloy members</p>
+                    <p>Everyday we strive to create the best possible experience for both our new customers and our community of carwash / alloy members</p>
                     <p>It is not just part of our culture, it is our culture by listening to you and applying the principles.</p>
                     <ul class="pvList list-unstyled pl-0 mb-0">
                       <li>

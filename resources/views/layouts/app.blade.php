@@ -159,7 +159,7 @@
                <ul class="socils-icons">
                   <li class=""><a target="_blank" href="https://www.facebook.com/splashanddrip"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
             <li class=""><a target="_blank" href="https://www.instagram.com/splashanddrip/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-            <li><a href="http://www.tiktok.com/splashanddrip" class="googleplus" target="_blank"><i class="fa fa-tiktok"></i></a></li>
+            <li><a href="https://www.tiktok.com/@splashanddrip" class="googleplus" target="_blank"><i class="fa fa-tiktok"></i></a></li>
                </ul>
             </div>
          </div>
