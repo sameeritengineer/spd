@@ -239,7 +239,7 @@ class MainworkController extends Controller
 
     }
     public function getLnt($zip){
-    $url = "https://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($zip)."&sensor=false&key=AIzaSyDQM082qVXgJB4Ba8CW8e7Oor1eAmtWvXc";
+    $url = "https://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($zip)."&sensor=false&key=AIzaSyDeyQzdLJzHMY9gNz8LbuJRb48w9a7G0jM";
     $result_string = file_get_contents($url);
     $result = json_decode($result_string, true);
     if($result['status'] == 'ZERO_RESULTS'){
